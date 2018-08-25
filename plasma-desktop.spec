@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.13.4
-Release  : 3
+Release  : 4
 URL      : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz.sig
@@ -24,6 +24,7 @@ BuildRequires : boost-dev
 BuildRequires : breeze-icons
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : freetype-dev
 BuildRequires : ibus-dev
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
@@ -61,6 +62,7 @@ BuildRequires : kwidgetsaddons-dev
 BuildRequires : kwin-dev
 BuildRequires : kwindowsystem-dev
 BuildRequires : kxmlgui-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libXcursor-dev
 BuildRequires : libXi-dev
 BuildRequires : libevdev-dev
@@ -68,8 +70,22 @@ BuildRequires : libinput-dev
 BuildRequires : libxcb-dev
 BuildRequires : libxkbfile-dev
 BuildRequires : phonon-dev
+BuildRequires : pkg-config
+BuildRequires : pkgconfig(Qt5Concurrent)
+BuildRequires : pkgconfig(Qt5DBus)
+BuildRequires : pkgconfig(Qt5Quick)
+BuildRequires : pkgconfig(Qt5QuickWidgets)
+BuildRequires : pkgconfig(Qt5Svg)
+BuildRequires : pkgconfig(Qt5Widgets)
+BuildRequires : pkgconfig(Qt5X11Extras)
 BuildRequires : pkgconfig(fontconfig)
+BuildRequires : pkgconfig(gio-2.0)
+BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : pkgconfig(gobject-2.0)
+BuildRequires : pkgconfig(ibus-1.0)
 BuildRequires : pkgconfig(libcanberra)
+BuildRequires : pkgconfig(x11-xcb)
+BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xorg-evdev)
 BuildRequires : pkgconfig(xorg-libinput)
@@ -77,7 +93,7 @@ BuildRequires : pkgconfig(xorg-synaptics)
 BuildRequires : plasma-framework-dev
 BuildRequires : plasma-workspace-dev
 BuildRequires : pulseaudio-dev
-BuildRequires : qtdeclarative-extras
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 BuildRequires : systemd-dev
@@ -165,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533055527
+export SOURCE_DATE_EPOCH=1535167520
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -173,7 +189,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1533055527
+export SOURCE_DATE_EPOCH=1535167520
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/plasma-desktop
 cp COPYING %{buildroot}/usr/share/doc/plasma-desktop/COPYING

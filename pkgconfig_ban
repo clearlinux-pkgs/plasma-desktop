@@ -1,3 +1,5 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
 scim
+xorg-evdev>=2.8.99.1
+ibus-1.0>=1.4.2

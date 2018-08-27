@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.13.4
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz.sig
@@ -21,6 +21,7 @@ Requires: plasma-desktop-locales
 BuildRequires : attica-dev
 BuildRequires : baloo-dev
 BuildRequires : boost-dev
+BuildRequires : breeze-dev
 BuildRequires : breeze-icons
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -82,7 +83,6 @@ BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
-BuildRequires : pkgconfig(ibus-1.0)
 BuildRequires : pkgconfig(libcanberra)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb)
@@ -93,7 +93,7 @@ BuildRequires : pkgconfig(xorg-synaptics)
 BuildRequires : plasma-framework-dev
 BuildRequires : plasma-workspace-dev
 BuildRequires : pulseaudio-dev
-BuildRequires : qtbase-dev mesa-dev
+BuildRequires : qtbase-dev qtbase-extras mesa-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 BuildRequires : systemd-dev
@@ -181,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535167520
+export SOURCE_DATE_EPOCH=1535400111
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -189,7 +189,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535167520
+export SOURCE_DATE_EPOCH=1535400111
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/plasma-desktop
 cp COPYING %{buildroot}/usr/share/doc/plasma-desktop/COPYING
@@ -262,6 +262,9 @@ popd
 %find_lang plasmaactivitymanager
 %find_lang kcm_nightcolor
 %find_lang kcmqtquicksettings
+## install_append content
+mv %{buildroot}/etc/xdg %{buildroot}/usr/share
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -727,6 +730,15 @@ popd
 /usr/share/solid/devices/solid-device-StorageAccess.desktop
 /usr/share/solid/devices/solid-device-StorageDrive.desktop
 /usr/share/solid/devices/solid-device-StorageVolume.desktop
+/usr/share/xdg/colorschemes.knsrc
+/usr/share/xdg/emoticons.knsrc
+/usr/share/xdg/icons.knsrc
+/usr/share/xdg/kfontinst.knsrc
+/usr/share/xdg/ksplash.knsrc
+/usr/share/xdg/lookandfeel.knsrc
+/usr/share/xdg/plasma-desktop.categories
+/usr/share/xdg/plasma-themes.knsrc
+/usr/share/xdg/xcursor.knsrc
 
 %files dev
 %defattr(-,root,root,-)

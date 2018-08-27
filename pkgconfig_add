@@ -7,3 +7,4 @@ Qt5Widgets
 Qt5X11Extras
 Qt5Svg
 Qt5Concurrent
+xorg-evdev

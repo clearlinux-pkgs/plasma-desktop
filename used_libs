@@ -1,8 +1,6 @@
-libICE.so.6
 libKF5Activities.so.5
 libKF5ActivitiesStats.so.1
 libKF5Archive.so.5
-libKF5Attica.so.5
 libKF5Auth.so.5
 libKF5Baloo.so.5
 libKF5Codecs.so.5
@@ -27,7 +25,6 @@ libKF5KIOCore.so.5
 libKF5KIOFileWidgets.so.5
 libKF5KIOWidgets.so.5
 libKF5NewStuff.so.5
-libKF5NewStuffCore.so.5
 libKF5Notifications.so.5
 libKF5NotifyConfig.so.5
 libKF5Package.so.5
@@ -59,11 +56,9 @@ libQt5Svg.so.5
 libQt5Widgets.so.5
 libQt5X11Extras.so.5
 libQt5Xml.so.5
-libSM.so.6
 libX11-xcb.so.1
 libX11.so.6
 libXcursor.so.1
-libXext.so.6
 libXfixes.so.3
 libXft.so.2
 libXi.so.6

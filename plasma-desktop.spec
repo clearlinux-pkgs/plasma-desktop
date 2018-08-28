@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.13.4
-Release  : 6
+Release  : 7
 URL      : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz.sig
@@ -181,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535400444
+export SOURCE_DATE_EPOCH=1535449913
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -189,7 +189,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535400444
+export SOURCE_DATE_EPOCH=1535449913
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/plasma-desktop
 cp COPYING %{buildroot}/usr/share/doc/plasma-desktop/COPYING
@@ -262,9 +262,6 @@ popd
 %find_lang plasmaactivitymanager
 %find_lang kcm_nightcolor
 %find_lang kcmqtquicksettings
-## install_append content
-mv %{buildroot}/etc/xdg %{buildroot}/usr/share
-## install_append end
 
 %files
 %defattr(-,root,root,-)

@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.13.4
-Release  : 7
+Release  : 9
 URL      : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz.sig
@@ -181,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535449913
+export SOURCE_DATE_EPOCH=1535776898
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -189,7 +189,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535449913
+export SOURCE_DATE_EPOCH=1535776898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/plasma-desktop
 cp COPYING %{buildroot}/usr/share/doc/plasma-desktop/COPYING
@@ -262,6 +262,9 @@ popd
 %find_lang plasmaactivitymanager
 %find_lang kcm_nightcolor
 %find_lang kcmqtquicksettings
+## install_append content
+mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -308,6 +311,8 @@ popd
 /usr/share/dbus-1/services/org.kde.fontinst.service
 /usr/share/dbus-1/system-services/org.kde.fontinst.service
 /usr/share/dbus-1/system-services/org.kde.kcontrol.kcmclock.service
+/usr/share/dbus-1/system.d/org.kde.fontinst.conf
+/usr/share/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
 /usr/share/icons/hicolor/128x128/devices/input-touchpad.png
 /usr/share/icons/hicolor/128x128/mimetypes/fonts-package.png
 /usr/share/icons/hicolor/16x16/apps/kfontview.png

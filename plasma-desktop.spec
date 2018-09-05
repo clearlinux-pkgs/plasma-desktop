@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.13.4
-Release  : 9
-URL      : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.13.4/plasma-desktop-5.13.4.tar.xz.sig
+Version  : 5.13.5
+Release  : 10
+URL      : https://download.kde.org/stable/plasma/5.13.5/plasma-desktop-5.13.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.13.5/plasma-desktop-5.13.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.13.5/plasma-desktop-5.13.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -18,7 +18,6 @@ Requires: plasma-desktop-lib
 Requires: plasma-desktop-data
 Requires: plasma-desktop-license
 Requires: plasma-desktop-locales
-BuildRequires : attica-dev
 BuildRequires : baloo-dev
 BuildRequires : boost-dev
 BuildRequires : breeze-dev
@@ -29,15 +28,9 @@ BuildRequires : freetype-dev
 BuildRequires : ibus-dev
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
-BuildRequires : karchive-dev
-BuildRequires : kcmutils-dev
-BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kcrash-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
 BuildRequires : kded-dev
-BuildRequires : kdelibs4support-dev
 BuildRequires : kdesignerplugin-dev
 BuildRequires : kemoticons-dev
 BuildRequires : kfilemetadata-dev
@@ -49,20 +42,16 @@ BuildRequires : kitemmodels-dev
 BuildRequires : kitemviews-dev
 BuildRequires : kjobwidgets-dev
 BuildRequires : knewstuff-dev
-BuildRequires : knotifications-dev
 BuildRequires : knotifyconfig-dev
-BuildRequires : kpackage-dev
 BuildRequires : kparts-dev
 BuildRequires : kpeople-dev
 BuildRequires : krunner-dev
 BuildRequires : kscreenlocker-dev
 BuildRequires : ktextwidgets-dev
 BuildRequires : kunitconversion-dev
-BuildRequires : kwallet-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : kwin-dev
 BuildRequires : kwindowsystem-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libXcursor-dev
 BuildRequires : libXi-dev
@@ -79,7 +68,6 @@ BuildRequires : pkgconfig(Qt5QuickWidgets)
 BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
-BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
@@ -107,7 +95,13 @@ BuildRequires : xcb-util-xrm-dev
 BuildRequires : xorg-server-dev
 
 %description
-The files in this directory contain design notes on various part of the Plasma architecture. They are written using the "markdown" syntax and automatically sync'd to the plasma.kde.org website.
+CHANGES V0.2
+- Global keys stored by default in ~/.kde/share/config/kdeglobals
+[Global Keys] group
+- KKeyDialog checks new key choices against exising bindings for the widget
+and against entries in .kderc [Global Keys]
+- kcmkeys now has two standard kcontrol pages - one for standard desktop
+accelerators and one for global keybindings.
 
 %package bin
 Summary: bin components for the plasma-desktop package.
@@ -174,14 +168,14 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.13.4
+%setup -q -n plasma-desktop-5.13.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535776898
+export SOURCE_DATE_EPOCH=1536122645
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -189,7 +183,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535776898
+export SOURCE_DATE_EPOCH=1536122645
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/plasma-desktop
 cp COPYING %{buildroot}/usr/share/doc/plasma-desktop/COPYING
@@ -1621,9 +1615,9 @@ mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.13.4
+/usr/lib64/libkfontinst.so.5.13.5
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.13.4
+/usr/lib64/libkfontinstui.so.5.13.5
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

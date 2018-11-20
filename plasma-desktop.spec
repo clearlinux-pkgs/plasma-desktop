@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.14.3
-Release  : 15
+Release  : 16
 URL      : https://download.kde.org/stable/plasma/5.14.3/plasma-desktop-5.14.3.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.3/plasma-desktop-5.14.3.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.3/plasma-desktop-5.14.3.tar.xz.sig
@@ -18,6 +18,7 @@ Requires: plasma-desktop-data = %{version}-%{release}
 Requires: plasma-desktop-lib = %{version}-%{release}
 Requires: plasma-desktop-license = %{version}-%{release}
 Requires: plasma-desktop-locales = %{version}-%{release}
+BuildRequires : attica-dev
 BuildRequires : baloo-dev
 BuildRequires : boost-dev
 BuildRequires : breeze-dev
@@ -31,9 +32,15 @@ BuildRequires : freetype-dev
 BuildRequires : ibus-dev
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
+BuildRequires : karchive-dev
+BuildRequires : kcmutils-dev
+BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kcrash-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : kded-dev
+BuildRequires : kdelibs4support-dev
 BuildRequires : kdesignerplugin-dev
 BuildRequires : kemoticons-dev
 BuildRequires : kfilemetadata-dev
@@ -45,16 +52,20 @@ BuildRequires : kitemmodels-dev
 BuildRequires : kitemviews-dev
 BuildRequires : kjobwidgets-dev
 BuildRequires : knewstuff-dev
+BuildRequires : knotifications-dev
 BuildRequires : knotifyconfig-dev
+BuildRequires : kpackage-dev
 BuildRequires : kparts-dev
 BuildRequires : kpeople-dev
 BuildRequires : krunner-dev
 BuildRequires : kscreenlocker-dev
 BuildRequires : ktextwidgets-dev
 BuildRequires : kunitconversion-dev
+BuildRequires : kwallet-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : kwin-dev
 BuildRequires : kwindowsystem-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libXcursor-dev
 BuildRequires : libXi-dev
@@ -71,10 +82,12 @@ BuildRequires : pkgconfig(Qt5QuickWidgets)
 BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
+BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(ibus-1.0)
+BuildRequires : pkgconfig(libcanberra)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xkeyboard-config)
@@ -105,14 +118,6 @@ CHANGES V0.2
 and against entries in .kderc [Global Keys]
 - kcmkeys now has two standard kcontrol pages - one for standard desktop
 accelerators and one for global keybindings.
-
-%package abi
-Summary: abi components for the plasma-desktop package.
-Group: Default
-
-%description abi
-abi components for the plasma-desktop package.
-
 
 %package bin
 Summary: bin components for the plasma-desktop package.
@@ -186,7 +191,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541534721
+export SOURCE_DATE_EPOCH=1542751392
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -194,7 +199,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541534721
+export SOURCE_DATE_EPOCH=1542751392
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/COPYING
@@ -283,13 +288,6 @@ mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
 /usr/lib64/libexec/kimpanel-ibus-panel
 /usr/lib64/libexec/kimpanel-ibus-panel-launcher
 /usr/lib64/libexec/plasma-changeicons
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libkfontinst.so.5.14.3.abi
-/usr/share/abi/libkfontinst.so.5.abi
-/usr/share/abi/libkfontinstui.so.5.14.3.abi
-/usr/share/abi/libkfontinstui.so.5.abi
 
 %files bin
 %defattr(-,root,root,-)

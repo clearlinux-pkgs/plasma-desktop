@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.14.4.1
-Release  : 18
-URL      : https://download.kde.org/stable/plasma/5.14.4/plasma-desktop-5.14.4.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.14.4/plasma-desktop-5.14.4.1.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.14.4/plasma-desktop-5.14.4.1.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.14.5
+Release  : 19
+URL      : https://download.kde.org/stable/plasma/5.14.5/plasma-desktop-5.14.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.14.5/plasma-desktop-5.14.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.14.5/plasma-desktop-5.14.5.tar.xz.sig
+Summary  : KDE Plasma Desktop
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
 Requires: plasma-desktop-bin = %{version}-%{release}
@@ -171,22 +171,22 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.14.4.1
+%setup -q -n plasma-desktop-5.14.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543515805
+export SOURCE_DATE_EPOCH=1546979279
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543515805
+export SOURCE_DATE_EPOCH=1546979279
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/COPYING
@@ -260,9 +260,6 @@ popd
 %find_lang kcm_nightcolor
 %find_lang kcmqtquicksettings
 %find_lang plasma_applet_org.kde.panel
-## install_append content
-mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
-## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -1615,9 +1612,9 @@ mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.14.4
+/usr/lib64/libkfontinst.so.5.14.5
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.14.4
+/usr/lib64/libkfontinstui.so.5.14.5
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

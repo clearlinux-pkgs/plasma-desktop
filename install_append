@@ -1,1 +1,1 @@
-mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
+#mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/

@@ -1,4 +1,4 @@
-5.14.5
+5.15.0
 attica-dev
 baloo-dev
 breeze-dev
@@ -11,6 +11,7 @@ kdbusaddons-dev
 kdeclarative-dev
 kdelibs4support-dev
 kglobalaccel-dev
+kirigami2-dev
 knewstuff-dev
 knotifications-dev
 knotifyconfig-dev

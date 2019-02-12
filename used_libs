@@ -72,6 +72,4 @@ libm.so.6
 libphonon4qt5.so.4
 libstdc++.so.6
 libtaskmanager.so.6
-libxcb-image.so.0
-libxcb-keysyms.so.1
 libxkbfile.so.1

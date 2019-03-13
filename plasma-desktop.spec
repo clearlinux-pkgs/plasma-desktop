@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.15.2
-Release  : 25
-URL      : https://download.kde.org/stable/plasma/5.15.2/plasma-desktop-5.15.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.2/plasma-desktop-5.15.2.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.2/plasma-desktop-5.15.2.tar.xz.sig
+Version  : 5.15.3.2
+Release  : 26
+URL      : https://download.kde.org/stable/plasma/5.15.3/plasma-desktop-5.15.3.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.3/plasma-desktop-5.15.3.2.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.3/plasma-desktop-5.15.3.2.tar.xz.sig
 Summary  : KDE Plasma Desktop
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -35,6 +35,7 @@ BuildRequires : kcompletion-dev
 BuildRequires : kcrash-dev
 BuildRequires : kded-dev
 BuildRequires : kdesignerplugin-dev
+BuildRequires : kdoctools
 BuildRequires : kemoticons-dev
 BuildRequires : kfilemetadata-dev
 BuildRequires : kglobalaccel-dev
@@ -173,22 +174,23 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.15.2
+%setup -q -n plasma-desktop-5.15.3.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551204354
+export SOURCE_DATE_EPOCH=1552485055
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551204354
+export SOURCE_DATE_EPOCH=1552485055
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/COPYING
@@ -1060,50 +1062,6 @@ popd
 /usr/share/doc/HTML/et/kcontrol/solid-actions/index.docbook
 /usr/share/doc/HTML/et/kcontrol/solid-device-automounter/index.cache.bz2
 /usr/share/doc/HTML/et/kcontrol/solid-device-automounter/index.docbook
-/usr/share/doc/HTML/id/kcontrol/autostart/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/autostart/index.docbook
-/usr/share/doc/HTML/id/kcontrol/baloo/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/baloo/index.docbook
-/usr/share/doc/HTML/id/kcontrol/clock/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/clock/index.docbook
-/usr/share/doc/HTML/id/kcontrol/colors/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/colors/index.docbook
-/usr/share/doc/HTML/id/kcontrol/componentchooser/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/componentchooser/index.docbook
-/usr/share/doc/HTML/id/kcontrol/cursortheme/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/cursortheme/index.docbook
-/usr/share/doc/HTML/id/kcontrol/desktopthemedetails/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/desktopthemedetails/index.docbook
-/usr/share/doc/HTML/id/kcontrol/emoticons/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/emoticons/index.docbook
-/usr/share/doc/HTML/id/kcontrol/fontinst/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/fontinst/index.docbook
-/usr/share/doc/HTML/id/kcontrol/fonts/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/fonts/index.docbook
-/usr/share/doc/HTML/id/kcontrol/formats/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/formats/index.docbook
-/usr/share/doc/HTML/id/kcontrol/icons/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/icons/index.docbook
-/usr/share/doc/HTML/id/kcontrol/joystick/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/joystick/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmaccess/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmaccess/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmlaunchfeedback/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmnotify/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmsmserver/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmsmserver/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmstyle/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmstyle/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kded/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kded/index.docbook
-/usr/share/doc/HTML/id/kcontrol/keyboard/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/keyboard/index.docbook
-/usr/share/doc/HTML/id/kcontrol/keys/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/keys/index.docbook
-/usr/share/doc/HTML/id/plasma-desktop/index.cache.bz2
-/usr/share/doc/HTML/id/plasma-desktop/index.docbook
 /usr/share/doc/HTML/it/kcontrol/autostart/index.cache.bz2
 /usr/share/doc/HTML/it/kcontrol/autostart/index.docbook
 /usr/share/doc/HTML/it/kcontrol/baloo/index.cache.bz2
@@ -1635,9 +1593,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.15.2
+/usr/lib64/libkfontinst.so.5.15.3
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.15.2
+/usr/lib64/libkfontinstui.so.5.15.3
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

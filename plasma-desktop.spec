@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.16.4
-Release  : 36
-URL      : https://download.kde.org/stable/plasma/5.16.4/plasma-desktop-5.16.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.4/plasma-desktop-5.16.4.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.4/plasma-desktop-5.16.4.tar.xz.sig
+Version  : 5.16.5
+Release  : 37
+URL      : https://download.kde.org/stable/plasma/5.16.5/plasma-desktop-5.16.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.5/plasma-desktop-5.16.5.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.16.5/plasma-desktop-5.16.5.tar.xz.sig
 Summary  : KDE Plasma Desktop
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -172,16 +172,17 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.16.4
+%setup -q -n plasma-desktop-5.16.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564513721
+export SOURCE_DATE_EPOCH=1567650060
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -195,7 +196,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564513721
+export SOURCE_DATE_EPOCH=1567650060
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/COPYING
@@ -1571,14 +1572,10 @@ popd
 /usr/share/doc/HTML/uk/kcontrol/fonts/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/formats/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/formats/index.docbook
-/usr/share/doc/HTML/uk/kcontrol/icons/delete-theme.png
-/usr/share/doc/HTML/uk/kcontrol/icons/effects.png
 /usr/share/doc/HTML/uk/kcontrol/icons/get-new-theme.png
 /usr/share/doc/HTML/uk/kcontrol/icons/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/icons/index.docbook
-/usr/share/doc/HTML/uk/kcontrol/icons/install-theme.png
 /usr/share/doc/HTML/uk/kcontrol/icons/main.png
-/usr/share/doc/HTML/uk/kcontrol/icons/size.png
 /usr/share/doc/HTML/uk/kcontrol/icons/use-of-icons.png
 /usr/share/doc/HTML/uk/kcontrol/joystick/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/joystick/index.docbook
@@ -1614,6 +1611,7 @@ popd
 /usr/share/doc/HTML/uk/kcontrol/solid-device-automounter/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/spellchecking/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/spellchecking/index.docbook
+/usr/share/doc/HTML/uk/kcontrol/splashscreen/get-new-theme.png
 /usr/share/doc/HTML/uk/kcontrol/splashscreen/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/splashscreen/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/splashscreen/splash-main.png
@@ -1631,9 +1629,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.16.4
+/usr/lib64/libkfontinst.so.5.16.5
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.16.4
+/usr/lib64/libkfontinstui.so.5.16.5
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

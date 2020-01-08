@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.17.4
-Release  : 43
-URL      : https://download.kde.org/stable/plasma/5.17.4/plasma-desktop-5.17.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.17.4/plasma-desktop-5.17.4.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.17.4/plasma-desktop-5.17.4.tar.xz.sig
+Version  : 5.17.5
+Release  : 44
+URL      : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz.sig
 Summary  : KDE Plasma Desktop
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -186,15 +186,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.17.4
-cd %{_builddir}/plasma-desktop-5.17.4
+%setup -q -n plasma-desktop-5.17.5
+cd %{_builddir}/plasma-desktop-5.17.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1575408167
+export SOURCE_DATE_EPOCH=1578443070
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -211,20 +211,20 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1575408167
+export SOURCE_DATE_EPOCH=1578443070
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.17.4/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/plasma-desktop-5.17.4/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.17.4/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/plasma-desktop-5.17.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/plasma-desktop-5.17.4/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/plasma-desktop-5.17.4/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/plasma-desktop-5.17.4/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/plasma-desktop-5.17.4/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/plasma-desktop-5.17.4/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
-cp %{_builddir}/plasma-desktop-5.17.4/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
-cp %{_builddir}/plasma-desktop-5.17.4/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.17.5/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.17.5/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.17.5/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/plasma-desktop-5.17.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/plasma-desktop-5.17.5/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
+cp %{_builddir}/plasma-desktop-5.17.5/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
+cp %{_builddir}/plasma-desktop-5.17.5/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -285,6 +285,9 @@ popd
 %find_lang kcm_nightcolor
 %find_lang kcmqtquicksettings
 %find_lang plasma_toolbox_org.kde.paneltoolbox
+## install_append content
+#mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -1663,9 +1666,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.17.4
+/usr/lib64/libkfontinst.so.5.17.5
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.17.4
+/usr/lib64/libkfontinstui.so.5.17.5
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

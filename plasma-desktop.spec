@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.17.5
-Release  : 44
-URL      : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.17.5/plasma-desktop-5.17.5.tar.xz.sig
+Version  : 5.18.0
+Release  : 45
+URL      : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz.sig
 Summary  : KDE Plasma Desktop
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -18,7 +18,6 @@ Requires: plasma-desktop-data = %{version}-%{release}
 Requires: plasma-desktop-lib = %{version}-%{release}
 Requires: plasma-desktop-license = %{version}-%{release}
 Requires: plasma-desktop-locales = %{version}-%{release}
-BuildRequires : attica-dev
 BuildRequires : baloo-dev
 BuildRequires : boost-dev
 BuildRequires : breeze-dev
@@ -32,15 +31,9 @@ BuildRequires : freetype-dev
 BuildRequires : ibus-dev
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
-BuildRequires : karchive-dev
-BuildRequires : kcmutils-dev
-BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kcrash-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
 BuildRequires : kded-dev
-BuildRequires : kdelibs4support-dev
 BuildRequires : kdesignerplugin-dev
 BuildRequires : kdoctools
 BuildRequires : kemoticons-dev
@@ -54,25 +47,21 @@ BuildRequires : kitemmodels-dev
 BuildRequires : kitemviews-dev
 BuildRequires : kjobwidgets-dev
 BuildRequires : knewstuff-dev
-BuildRequires : knotifications-dev
 BuildRequires : knotifyconfig-dev
-BuildRequires : kpackage-dev
 BuildRequires : kparts-dev
-BuildRequires : kpeople-dev
 BuildRequires : krunner-dev
 BuildRequires : kscreenlocker-dev
 BuildRequires : ktextwidgets-dev
 BuildRequires : kunitconversion-dev
-BuildRequires : kwallet-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : kwin-dev
 BuildRequires : kwindowsystem-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libXcursor-dev
 BuildRequires : libXi-dev
 BuildRequires : libevdev-dev
 BuildRequires : libinput-dev
+BuildRequires : libksysguard-dev
 BuildRequires : libxcb-dev
 BuildRequires : libxkbfile-dev
 BuildRequires : phonon-dev
@@ -84,11 +73,10 @@ BuildRequires : pkgconfig(Qt5QuickWidgets)
 BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
-BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(ibus-1.0)
-BuildRequires : pkgconfig(libcanberra)
+BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xorg-evdev)
 BuildRequires : pkgconfig(xorg-libinput)
@@ -100,7 +88,6 @@ BuildRequires : qtbase-dev mesa-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 BuildRequires : systemd-dev
-BuildRequires : util-linux
 BuildRequires : xcb-util-cursor-dev
 BuildRequires : xcb-util-dev
 BuildRequires : xcb-util-image-dev
@@ -186,15 +173,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.17.5
-cd %{_builddir}/plasma-desktop-5.17.5
+%setup -q -n plasma-desktop-5.18.0
+cd %{_builddir}/plasma-desktop-5.18.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578443070
+export SOURCE_DATE_EPOCH=1581454687
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -211,20 +198,20 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578443070
+export SOURCE_DATE_EPOCH=1581454687
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.17.5/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/plasma-desktop-5.17.5/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.17.5/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/plasma-desktop-5.17.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/plasma-desktop-5.17.5/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/plasma-desktop-5.17.5/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
-cp %{_builddir}/plasma-desktop-5.17.5/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
-cp %{_builddir}/plasma-desktop-5.17.5/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.18.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.18.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.18.0/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/plasma-desktop-5.18.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/plasma-desktop-5.18.0/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
+cp %{_builddir}/plasma-desktop-5.18.0/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
+cp %{_builddir}/plasma-desktop-5.18.0/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -238,6 +225,7 @@ popd
 %find_lang kcm_desktoppaths
 %find_lang kcm_fonts
 %find_lang kcm_launchfeedback
+%find_lang kcm_style
 %find_lang kcmaccess
 %find_lang kcmformats
 %find_lang kcmkclock
@@ -245,17 +233,16 @@ popd
 %find_lang kcmkeys
 %find_lang kcmmouse
 %find_lang kcmsmserver
-%find_lang kcmstyle
 %find_lang kfontinst
 %find_lang knetattach5
 %find_lang krdb
 %find_lang plasma_applet_org.kde.desktopcontainment
 %find_lang attica_kde_plugin
-%find_lang kcm5_baloofile
 %find_lang kcm5_device_automounter
 %find_lang kcm5_emoticons
 %find_lang kcm_activities5
 %find_lang kcm_autostart
+%find_lang kcm_baloofile
 %find_lang kcm_desktoptheme
 %find_lang kcm_lookandfeel
 %find_lang kcm_search
@@ -280,9 +267,10 @@ popd
 %find_lang plasma_shell_org.kde.plasma.desktop
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
 %find_lang plasmaactivitymanager
-%find_lang kcm_notifications
-%find_lang plasma_applet_org.kde.panel
 %find_lang kcm_nightcolor
+%find_lang kcm_notifications
+%find_lang org.kde.plasma.emojier
+%find_lang plasma_applet_org.kde.panel
 %find_lang kcmqtquicksettings
 %find_lang plasma_toolbox_org.kde.paneltoolbox
 ## install_append content
@@ -303,6 +291,7 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+/usr/bin/ibus-ui-emojier-plasma
 /usr/bin/kaccess
 /usr/bin/kapplymousetheme
 /usr/bin/kcm-touchpad-list-devices
@@ -313,14 +302,30 @@ popd
 /usr/bin/krdb
 /usr/bin/lookandfeeltool
 /usr/bin/solid-action-desktop-gen
+/usr/bin/tastenbrett
 
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kcolorschemeeditor.desktop
 /usr/share/applications/org.kde.kfontview.desktop
 /usr/share/applications/org.kde.knetattach.desktop
+/usr/share/applications/org.kde.plasma.emojier.desktop
+/usr/share/config.kcfg/browser_settings.kcfg
+/usr/share/config.kcfg/colorssettings.kcfg
+/usr/share/config.kcfg/cursorthemesettings.kcfg
+/usr/share/config.kcfg/fontssettings.kcfg
+/usr/share/config.kcfg/iconssettingsbase.kcfg
+/usr/share/config.kcfg/kactivitymanagerd_plugins_settings.kcfg
+/usr/share/config.kcfg/kactivitymanagerd_settings.kcfg
+/usr/share/config.kcfg/launchfeedbacksettings.kcfg
+/usr/share/config.kcfg/lookandfeelsettings.kcfg
+/usr/share/config.kcfg/splashscreensettings.kcfg
+/usr/share/config.kcfg/stylesettings.kcfg
+/usr/share/config.kcfg/terminal_settings.kcfg
 /usr/share/config.kcfg/touchpad.kcfg
 /usr/share/config.kcfg/touchpaddaemon.kcfg
+/usr/share/config.kcfg/workspaceoptions_kdeglobalssettings.kcfg
+/usr/share/config.kcfg/workspaceoptions_plasmasettings.kcfg
 /usr/share/dbus-1/interfaces/org.kde.touchpad.xml
 /usr/share/dbus-1/services/org.kde.fontinst.service
 /usr/share/dbus-1/system-services/org.kde.fontinst.service
@@ -367,7 +372,10 @@ popd
 /usr/share/kcmmouse/pics/mouse_lh.png
 /usr/share/kcmmouse/pics/mouse_rh.png
 /usr/share/kcmsolidactions/solid-action-template.desktop
+/usr/share/kconf_update/icons_remove_effects.upd
 /usr/share/kconf_update/krdb_libpathwipe.upd
+/usr/share/kconf_update/ksmserver_update_loginMode_value.py
+/usr/share/kconf_update/ksmserver_update_loginMode_value.upd
 /usr/share/kcontrol/pics/logo.png
 /usr/share/kcontrol/pics/mini-world.png
 /usr/share/kdisplay/app-defaults/AAAAAAGeneral.ad
@@ -402,10 +410,13 @@ popd
 /usr/share/kfontinst/icons/hicolor/22x22/actions/font-disable.png
 /usr/share/kfontinst/icons/hicolor/22x22/actions/font-enable.png
 /usr/share/kfontinst/icons/hicolor/22x22/actions/fontstatus.png
+/usr/share/kglobalaccel/org.kde.plasma.emojier.desktop
 /usr/share/knotifications5/kaccess.notifyrc
 /usr/share/knotifications5/kcm_touchpad.notifyrc
 /usr/share/knsrcfiles/colorschemes.knsrc
 /usr/share/knsrcfiles/emoticons.knsrc
+/usr/share/knsrcfiles/gtk2_themes.knsrc
+/usr/share/knsrcfiles/gtk3_themes.knsrc
 /usr/share/knsrcfiles/icons.knsrc
 /usr/share/knsrcfiles/kfontinst.knsrc
 /usr/share/knsrcfiles/ksplash.knsrc
@@ -417,6 +428,9 @@ popd
 /usr/share/kpackage/kcms/kcm5_icons/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm5_icons/metadata.desktop
 /usr/share/kpackage/kcms/kcm5_icons/metadata.json
+/usr/share/kpackage/kcms/kcm_baloofile/contents/ui/main.qml
+/usr/share/kpackage/kcms/kcm_baloofile/metadata.desktop
+/usr/share/kpackage/kcms/kcm_baloofile/metadata.json
 /usr/share/kpackage/kcms/kcm_colors/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_colors/metadata.desktop
 /usr/share/kpackage/kcms/kcm_colors/metadata.json
@@ -439,7 +453,6 @@ popd
 /usr/share/kpackage/kcms/kcm_lookandfeel/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_lookandfeel/metadata.desktop
 /usr/share/kpackage/kcms/kcm_lookandfeel/metadata.json
-/usr/share/kpackage/kcms/kcm_nightcolor/contents/ui/LocationsAutoView.qml
 /usr/share/kpackage/kcms/kcm_nightcolor/contents/ui/LocationsFixedView.qml
 /usr/share/kpackage/kcms/kcm_nightcolor/contents/ui/NumberField.qml
 /usr/share/kpackage/kcms/kcm_nightcolor/contents/ui/TimeField.qml
@@ -457,6 +470,11 @@ popd
 /usr/share/kpackage/kcms/kcm_splashscreen/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_splashscreen/metadata.desktop
 /usr/share/kpackage/kcms/kcm_splashscreen/metadata.json
+/usr/share/kpackage/kcms/kcm_style/contents/ui/EffectSettingsPopup.qml
+/usr/share/kpackage/kcms/kcm_style/contents/ui/GtkStylePage.qml
+/usr/share/kpackage/kcms/kcm_style/contents/ui/main.qml
+/usr/share/kpackage/kcms/kcm_style/metadata.desktop
+/usr/share/kpackage/kcms/kcm_style/metadata.json
 /usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_workspace/metadata.desktop
 /usr/share/kpackage/kcms/kcm_workspace/metadata.json
@@ -487,6 +505,7 @@ popd
 /usr/share/kservices5/kcm_notifications.desktop
 /usr/share/kservices5/kcm_plasmasearch.desktop
 /usr/share/kservices5/kcm_splashscreen.desktop
+/usr/share/kservices5/kcm_style.desktop
 /usr/share/kservices5/kcm_touchpad.desktop
 /usr/share/kservices5/kcm_workspace.desktop
 /usr/share/kservices5/kcmaccess.desktop
@@ -525,7 +544,6 @@ popd
 /usr/share/kservices5/solid-actions.desktop
 /usr/share/kservices5/spellchecking.desktop
 /usr/share/kservices5/standard_actions.desktop
-/usr/share/kservices5/style.desktop
 /usr/share/kservicetypes5/solid-device-type.desktop
 /usr/share/kxmlgui5/kfontinst/kfontviewpart.rc
 /usr/share/kxmlgui5/kfontview/kfontviewui.rc
@@ -565,7 +583,6 @@ popd
 /usr/share/plasma/layout-templates/org.kde.plasma.desktop.emptyPanel/metadata.json
 /usr/share/plasma/packages/org.kde.desktoptoolbox/contents/config/main.xml
 /usr/share/plasma/packages/org.kde.desktoptoolbox/contents/ui/ToolBoxButton.qml
-/usr/share/plasma/packages/org.kde.desktoptoolbox/contents/ui/ToolBoxItem.qml
 /usr/share/plasma/packages/org.kde.desktoptoolbox/contents/ui/ToolBoxRoot.qml
 /usr/share/plasma/packages/org.kde.desktoptoolbox/metadata.desktop
 /usr/share/plasma/packages/org.kde.desktoptoolbox/metadata.json
@@ -582,7 +599,6 @@ popd
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/ConfigIcons.qml
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/ConfigLocation.qml
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/ConfigOverlay.qml
-/usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/ConfigTweaks.qml
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/FolderItemActionButton.qml
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/FolderItemDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.desktopcontainment/contents/ui/FolderItemPreviewPluginsDialog.qml
@@ -815,8 +831,6 @@ popd
 /usr/share/doc/HTML/ca/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/ca/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/ca/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/kcmstyle/index.cache.bz2
@@ -903,8 +917,6 @@ popd
 /usr/share/doc/HTML/de/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/de/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/de/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/de/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/de/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/de/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/de/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/de/kcontrol/kcmstyle/index.cache.bz2
@@ -979,8 +991,6 @@ popd
 /usr/share/doc/HTML/en/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/en/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/en/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/en/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/en/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/en/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/en/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/en/kcontrol/kcmstyle/index.cache.bz2
@@ -995,6 +1005,8 @@ popd
 /usr/share/doc/HTML/en/kcontrol/keys/remove.png
 /usr/share/doc/HTML/en/kcontrol/mouse/index.cache.bz2
 /usr/share/doc/HTML/en/kcontrol/mouse/index.docbook
+/usr/share/doc/HTML/en/kcontrol/notifications/index.cache.bz2
+/usr/share/doc/HTML/en/kcontrol/notifications/index.docbook
 /usr/share/doc/HTML/en/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/en/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/en/kcontrol/paths/paths.png
@@ -1064,8 +1076,6 @@ popd
 /usr/share/doc/HTML/es/kcontrol/joystick/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/es/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/es/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kcmstyle/index.cache.bz2
@@ -1118,8 +1128,6 @@ popd
 /usr/share/doc/HTML/id/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/id/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/id/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/id/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/id/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/id/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/id/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/id/kcontrol/kcmstyle/index.cache.bz2
@@ -1180,8 +1188,6 @@ popd
 /usr/share/doc/HTML/it/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/it/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/it/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/it/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/it/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/it/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/it/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/it/kcontrol/kcmstyle/index.cache.bz2
@@ -1242,8 +1248,6 @@ popd
 /usr/share/doc/HTML/nl/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/nl/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/nl/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/nl/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/nl/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/kcmstyle/index.cache.bz2
@@ -1256,6 +1260,8 @@ popd
 /usr/share/doc/HTML/nl/kcontrol/keys/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/mouse/index.cache.bz2
 /usr/share/doc/HTML/nl/kcontrol/mouse/index.docbook
+/usr/share/doc/HTML/nl/kcontrol/notifications/index.cache.bz2
+/usr/share/doc/HTML/nl/kcontrol/notifications/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/nl/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/nl/kcontrol/solid-actions/index.cache.bz2
@@ -1302,8 +1308,6 @@ popd
 /usr/share/doc/HTML/pt/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/pt/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/pt/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/pt/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/pt/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/pt/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/pt/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/pt/kcontrol/kcmstyle/index.cache.bz2
@@ -1371,8 +1375,6 @@ popd
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/pt_BR/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/pt_BR/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/pt_BR/kcontrol/kcmstyle/index.cache.bz2
@@ -1456,8 +1458,6 @@ popd
 /usr/share/doc/HTML/ru/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/ru/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/ru/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/ru/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/ru/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/kcmstyle/index.cache.bz2
@@ -1500,8 +1500,6 @@ popd
 /usr/share/doc/HTML/sr/kcontrol/icons/index.docbook
 /usr/share/doc/HTML/sr/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/sr/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/sr/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/sr/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/sr/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/sr/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/sr/kcontrol/spellchecking/index.cache.bz2
@@ -1518,8 +1516,6 @@ popd
 /usr/share/doc/HTML/sr@latin/kcontrol/icons/index.docbook
 /usr/share/doc/HTML/sr@latin/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/sr@latin/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/sr@latin/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/sr@latin/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/sr@latin/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/sr@latin/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/sr@latin/kcontrol/spellchecking/index.cache.bz2
@@ -1556,8 +1552,6 @@ popd
 /usr/share/doc/HTML/sv/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/sv/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/sv/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/sv/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/sv/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/kcmstyle/index.cache.bz2
@@ -1570,6 +1564,8 @@ popd
 /usr/share/doc/HTML/sv/kcontrol/keys/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/mouse/index.cache.bz2
 /usr/share/doc/HTML/sv/kcontrol/mouse/index.docbook
+/usr/share/doc/HTML/sv/kcontrol/notifications/index.cache.bz2
+/usr/share/doc/HTML/sv/kcontrol/notifications/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/sv/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/sv/kcontrol/solid-actions/index.cache.bz2
@@ -1622,8 +1618,6 @@ popd
 /usr/share/doc/HTML/uk/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/kcmlaunchfeedback/index.docbook
-/usr/share/doc/HTML/uk/kcontrol/kcmnotify/index.cache.bz2
-/usr/share/doc/HTML/uk/kcontrol/kcmnotify/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/kcmsmserver/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/kcmstyle/index.cache.bz2
@@ -1636,6 +1630,8 @@ popd
 /usr/share/doc/HTML/uk/kcontrol/keys/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/mouse/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/mouse/index.docbook
+/usr/share/doc/HTML/uk/kcontrol/notifications/index.cache.bz2
+/usr/share/doc/HTML/uk/kcontrol/notifications/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/paths/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/paths/paths.png
@@ -1666,15 +1662,14 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.17.5
+/usr/lib64/libkfontinst.so.5.18.0
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.17.5
+/usr/lib64/libkfontinstui.so.5.18.0
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so
 /usr/lib64/qt5/plugins/kcm_activities.so
 /usr/lib64/qt5/plugins/kcm_autostart.so
-/usr/lib64/qt5/plugins/kcm_baloofile.so
 /usr/lib64/qt5/plugins/kcm_clock.so
 /usr/lib64/qt5/plugins/kcm_componentchooser.so
 /usr/lib64/qt5/plugins/kcm_desktoppaths.so
@@ -1690,7 +1685,7 @@ popd
 /usr/lib64/qt5/plugins/kcm_smserver.so
 /usr/lib64/qt5/plugins/kcm_solid_actions.so
 /usr/lib64/qt5/plugins/kcm_standard_actions.so
-/usr/lib64/qt5/plugins/kcm_style.so
+/usr/lib64/qt5/plugins/kcms/kcm_baloofile.so
 /usr/lib64/qt5/plugins/kcms/kcm_colors.so
 /usr/lib64/qt5/plugins/kcms/kcm_cursortheme.so
 /usr/lib64/qt5/plugins/kcms/kcm_desktoptheme.so
@@ -1701,6 +1696,7 @@ popd
 /usr/lib64/qt5/plugins/kcms/kcm_nightcolor.so
 /usr/lib64/qt5/plugins/kcms/kcm_notifications.so
 /usr/lib64/qt5/plugins/kcms/kcm_splashscreen.so
+/usr/lib64/qt5/plugins/kcms/kcm_style.so
 /usr/lib64/qt5/plugins/kcms/kcm_workspace.so
 /usr/lib64/qt5/plugins/kcmspellchecking.so
 /usr/lib64/qt5/plugins/kded_touchpad.so
@@ -1746,6 +1742,6 @@ popd
 /usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 /usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
-%files locales -f kaccess.lang -f kcm5_componentchooser.lang -f kcm5_icons.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_colors.lang -f kcm_cursortheme.lang -f kcm_desktoppaths.lang -f kcm_fonts.lang -f kcm_launchfeedback.lang -f kcmaccess.lang -f kcmformats.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmkeys.lang -f kcmmouse.lang -f kcmsmserver.lang -f kcmstyle.lang -f kfontinst.lang -f knetattach5.lang -f krdb.lang -f plasma_applet_org.kde.desktopcontainment.lang -f attica_kde_plugin.lang -f kcm5_baloofile.lang -f kcm5_device_automounter.lang -f kcm5_emoticons.lang -f kcm_activities5.lang -f kcm_autostart.lang -f kcm_desktoptheme.lang -f kcm_lookandfeel.lang -f kcm_search.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_standard_actions.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f plasma_applet_org.kde.kimpanel.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_applet_touchpad.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasmaactivitymanager.lang -f kcm_notifications.lang -f plasma_applet_org.kde.panel.lang -f kcm_nightcolor.lang -f kcmqtquicksettings.lang -f plasma_toolbox_org.kde.paneltoolbox.lang
+%files locales -f kaccess.lang -f kcm5_componentchooser.lang -f kcm5_icons.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_colors.lang -f kcm_cursortheme.lang -f kcm_desktoppaths.lang -f kcm_fonts.lang -f kcm_launchfeedback.lang -f kcm_style.lang -f kcmaccess.lang -f kcmformats.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmkeys.lang -f kcmmouse.lang -f kcmsmserver.lang -f kfontinst.lang -f knetattach5.lang -f krdb.lang -f plasma_applet_org.kde.desktopcontainment.lang -f attica_kde_plugin.lang -f kcm5_device_automounter.lang -f kcm5_emoticons.lang -f kcm_activities5.lang -f kcm_autostart.lang -f kcm_baloofile.lang -f kcm_desktoptheme.lang -f kcm_lookandfeel.lang -f kcm_search.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_standard_actions.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f plasma_applet_org.kde.kimpanel.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_applet_touchpad.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasmaactivitymanager.lang -f kcm_nightcolor.lang -f kcm_notifications.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f kcmqtquicksettings.lang -f plasma_toolbox_org.kde.paneltoolbox.lang
 %defattr(-,root,root,-)
 

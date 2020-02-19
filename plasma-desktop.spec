@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.18.0
-Release  : 45
-URL      : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.18.0/plasma-desktop-5.18.0.tar.xz.sig
-Summary  : KDE Plasma Desktop
+Version  : 5.18.1
+Release  : 46
+URL      : https://download.kde.org/stable/plasma/5.18.1/plasma-desktop-5.18.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.1/plasma-desktop-5.18.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.1/plasma-desktop-5.18.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
 Requires: plasma-desktop-bin = %{version}-%{release}
@@ -98,13 +98,7 @@ BuildRequires : xcb-util-xrm-dev
 BuildRequires : xorg-server-dev
 
 %description
-CHANGES V0.2
-- Global keys stored by default in ~/.kde/share/config/kdeglobals
-[Global Keys] group
-- KKeyDialog checks new key choices against exising bindings for the widget
-and against entries in .kderc [Global Keys]
-- kcmkeys now has two standard kcontrol pages - one for standard desktop
-accelerators and one for global keybindings.
+The files in this directory contain design notes on various part of the Plasma architecture. They are written using the "markdown" syntax and automatically sync'd to the plasma.kde.org website.
 
 %package bin
 Summary: bin components for the plasma-desktop package.
@@ -131,7 +125,6 @@ Requires: plasma-desktop-lib = %{version}-%{release}
 Requires: plasma-desktop-bin = %{version}-%{release}
 Requires: plasma-desktop-data = %{version}-%{release}
 Provides: plasma-desktop-devel = %{version}-%{release}
-Requires: plasma-desktop = %{version}-%{release}
 Requires: plasma-desktop = %{version}-%{release}
 
 %description dev
@@ -173,18 +166,17 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.18.0
-cd %{_builddir}/plasma-desktop-5.18.0
+%setup -q -n plasma-desktop-5.18.1
+cd %{_builddir}/plasma-desktop-5.18.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581454687
+export SOURCE_DATE_EPOCH=1582091132
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -198,20 +190,20 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1581454687
+export SOURCE_DATE_EPOCH=1582091132
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.18.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/plasma-desktop-5.18.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.18.0/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/plasma-desktop-5.18.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/plasma-desktop-5.18.0/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/plasma-desktop-5.18.0/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
-cp %{_builddir}/plasma-desktop-5.18.0/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
-cp %{_builddir}/plasma-desktop-5.18.0/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.18.1/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.18.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.18.1/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/plasma-desktop-5.18.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/plasma-desktop-5.18.1/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/plasma-desktop-5.18.1/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.18.1/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-desktop-5.18.1/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/plasma-desktop-5.18.1/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
+cp %{_builddir}/plasma-desktop-5.18.1/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
+cp %{_builddir}/plasma-desktop-5.18.1/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -765,6 +757,7 @@ popd
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/views/Desktop.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/views/Panel.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/metadata.desktop
@@ -1662,9 +1655,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.18.0
+/usr/lib64/libkfontinst.so.5.18.1
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.18.0
+/usr/lib64/libkfontinstui.so.5.18.1
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

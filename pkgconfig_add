@@ -1,10 +1,11 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+Qt5Concurrent
+Qt5DBus
 Qt5Quick
 Qt5QuickWidgets
-Qt5DBus
+Qt5Svg
 Qt5Widgets
 Qt5X11Extras
-Qt5Svg
-Qt5Concurrent
+xkeyboard-config
 xorg-evdev

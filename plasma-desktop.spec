@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.19.2
-Release  : 56
-URL      : https://download.kde.org/stable/plasma/5.19.2/plasma-desktop-5.19.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.2/plasma-desktop-5.19.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.2/plasma-desktop-5.19.2.tar.xz.sig
+Version  : 5.19.4
+Release  : 57
+URL      : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 ICU LGPL-2.0 LGPL-2.1
@@ -179,15 +179,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.19.2
-cd %{_builddir}/plasma-desktop-5.19.2
+%setup -q -n plasma-desktop-5.19.4
+cd %{_builddir}/plasma-desktop-5.19.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592948211
+export SOURCE_DATE_EPOCH=1597643169
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -203,20 +203,20 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592948211
+export SOURCE_DATE_EPOCH=1597643169
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.19.2/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/plasma-desktop-5.19.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.19.2/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/plasma-desktop-5.19.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/plasma-desktop-5.19.2/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/plasma-desktop-5.19.2/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/plasma-desktop-5.19.2/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/plasma-desktop-5.19.2/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/plasma-desktop-5.19.2/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
-cp %{_builddir}/plasma-desktop-5.19.2/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
-cp %{_builddir}/plasma-desktop-5.19.2/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.19.4/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.19.4/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.19.4/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/plasma-desktop-5.19.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/plasma-desktop-5.19.4/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/plasma-desktop-5.19.4/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.19.4/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-desktop-5.19.4/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/plasma-desktop-5.19.4/kcms/kfontinst/viewpart/COPYING.UNICODE %{buildroot}/usr/share/package-licenses/plasma-desktop/ae855f68ab20f57b2cc7e9b03f54a87563424eb9
+cp %{_builddir}/plasma-desktop-5.19.4/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
+cp %{_builddir}/plasma-desktop-5.19.4/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -824,8 +824,6 @@ popd
 /usr/share/doc/HTML/ca/kcontrol/componentchooser/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/cursortheme/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/cursortheme/index.docbook
-/usr/share/doc/HTML/ca/kcontrol/desktopthemedetails/edit-delete.png
-/usr/share/doc/HTML/ca/kcontrol/desktopthemedetails/edit-undo.png
 /usr/share/doc/HTML/ca/kcontrol/desktopthemedetails/get-new-theme.png
 /usr/share/doc/HTML/ca/kcontrol/desktopthemedetails/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/desktopthemedetails/index.docbook
@@ -841,8 +839,6 @@ popd
 /usr/share/doc/HTML/ca/kcontrol/fonts/main.png
 /usr/share/doc/HTML/ca/kcontrol/formats/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/formats/index.docbook
-/usr/share/doc/HTML/ca/kcontrol/icons/edit-delete.png
-/usr/share/doc/HTML/ca/kcontrol/icons/edit-undo.png
 /usr/share/doc/HTML/ca/kcontrol/icons/get-new-theme.png
 /usr/share/doc/HTML/ca/kcontrol/icons/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/icons/index.docbook
@@ -864,8 +860,6 @@ popd
 /usr/share/doc/HTML/ca/kcontrol/keyboard/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/keys/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/keys/index.docbook
-/usr/share/doc/HTML/ca/kcontrol/keys/list-add.png
-/usr/share/doc/HTML/ca/kcontrol/keys/remove.png
 /usr/share/doc/HTML/ca/kcontrol/mouse/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol/mouse/index.docbook
 /usr/share/doc/HTML/ca/kcontrol/notifications/index.cache.bz2
@@ -899,19 +893,10 @@ popd
 /usr/share/doc/HTML/ca/knetattach/screenshot3.png
 /usr/share/doc/HTML/ca/knetattach/screenshot4.png
 /usr/share/doc/HTML/ca/plasma-desktop/add-widgets.png
-/usr/share/doc/HTML/ca/plasma-desktop/application-launcher-settings.png
 /usr/share/doc/HTML/ca/plasma-desktop/application-launcher.png
 /usr/share/doc/HTML/ca/plasma-desktop/application-menu.png
-/usr/share/doc/HTML/ca/plasma-desktop/device_notifier_widget.png
-/usr/share/doc/HTML/ca/plasma-desktop/device_notifier_widget_actions.png
-/usr/share/doc/HTML/ca/plasma-desktop/folder-view.png
 /usr/share/doc/HTML/ca/plasma-desktop/index.cache.bz2
 /usr/share/doc/HTML/ca/plasma-desktop/index.docbook
-/usr/share/doc/HTML/ca/plasma-desktop/krunner-configure.png
-/usr/share/doc/HTML/ca/plasma-desktop/krunner-desktop-actions.png
-/usr/share/doc/HTML/ca/plasma-desktop/plasma-desktop-annotated.png
-/usr/share/doc/HTML/ca/plasma-desktop/remove.png
-/usr/share/doc/HTML/ca/plasma-desktop/system-tray-up-arrow.png
 /usr/share/doc/HTML/de/kcontrol/autostart/index.cache.bz2
 /usr/share/doc/HTML/de/kcontrol/autostart/index.docbook
 /usr/share/doc/HTML/de/kcontrol/baloo/index.cache.bz2
@@ -1690,9 +1675,9 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkdeinit5_kaccess.so
 /usr/lib64/libkfontinst.so.5
-/usr/lib64/libkfontinst.so.5.19.2
+/usr/lib64/libkfontinst.so.5.19.4
 /usr/lib64/libkfontinstui.so.5
-/usr/lib64/libkfontinstui.so.5.19.2
+/usr/lib64/libkfontinstui.so.5.19.4
 /usr/lib64/qt5/plugins/attica_kde.so
 /usr/lib64/qt5/plugins/fontthumbnail.so
 /usr/lib64/qt5/plugins/kcm_access.so

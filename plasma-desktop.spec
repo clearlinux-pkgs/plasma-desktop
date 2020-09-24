@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.19.4
-Release  : 57
+Release  : 58
 URL      : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.19.4/plasma-desktop-5.19.4.tar.xz.sig

@@ -3,3 +3,4 @@
 scim
 xorg-evdev>=2.8.99.1
 ibus-1.0>=1.4.2
+signon-oauth2plugin

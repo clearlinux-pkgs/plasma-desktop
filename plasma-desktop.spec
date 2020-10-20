@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.20.0
-Release  : 59
-URL      : https://download.kde.org/stable/plasma/5.20.0/plasma-desktop-5.20.0.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.0/plasma-desktop-5.20.0.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.0/plasma-desktop-5.20.0.tar.xz.sig
+Version  : 5.20.1
+Release  : 60
+URL      : https://download.kde.org/stable/plasma/5.20.1/plasma-desktop-5.20.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.20.1/plasma-desktop-5.20.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.20.1/plasma-desktop-5.20.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -165,15 +165,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.20.0
-cd %{_builddir}/plasma-desktop-5.20.0
+%setup -q -n plasma-desktop-5.20.1
+cd %{_builddir}/plasma-desktop-5.20.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602722033
+export SOURCE_DATE_EPOCH=1603226157
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -189,40 +189,40 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602722033
+export SOURCE_DATE_EPOCH=1603226157
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/'plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Air Balloon.png.license' %{buildroot}/usr/share/package-licenses/plasma-desktop/adabd116af64401b76dd0583f403226df139a955
-cp %{_builddir}/plasma-desktop-5.20.0/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/plasma-desktop-5.20.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.20.0/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/plasma-desktop-5.20.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/plasma-desktop-5.20.0/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/plasma-desktop-5.20.0/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
-cp %{_builddir}/plasma-desktop-5.20.0/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/plasma-desktop-5.20.0/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Astronaut.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/cf03e23da9870281180ea4163b13a7bcf38a7a82
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Books.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/cfbb9bcb7e1389c251a0ba3df2b0880cb6620ffb
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Brushes.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/72d8e0f71a54fd570e1e5264d6e5fb7b29406ad4
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Bulb.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/be0b3c0900b90dd09df479fad56b1229ad516d3a
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Car.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/0a9b728823a71ad489b7e1f072590fa00f3aa5bc
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Cat.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/129c1e09a68be9de6cef412b2a6e93559a87ea26
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Chamelon.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/c1d70c75552ee593940f393a518534e72587338f
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Cocktail.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/25b13534deaa992a714f25f14efeaa5eae4de592
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Dog.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/6220b049f6ae68dbc5a495f05afca9adead61ff6
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Fish.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/53c07475f67932feacd6188d906188a8dbd6991a
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Gamepad.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/32946f0e0836c590cc36b8b3206eef0349aa13dd
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Owl.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/f1bbe3025f15ecddbed6d4510fc2a1794ebf6009
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Pancakes.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/7cd170c61cf35ee527ce0ffa4abf416bf29038a7
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Parrot.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/a8b6c38c66a63e54df39a7a2394a61c386dcc323
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Pencils.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/545c254aaacc416b6d7d7881d4ad9fe94c1cbf1e
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Shuttle.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/3846b0d0a1072ef0698c1383f6aa5fa88e617a0d
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Soccer.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/2363d6a59f5770f0340ae0e616d48b000ed85041
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Sunflower.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/a8a48fc3a258971b868e37643efbabf5ca42ae95
-cp %{_builddir}/plasma-desktop-5.20.0/kcms/users/package/contents/img/photos/Sushi.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/e6059edbfaf63e2ad3822f2c09b7ee4c9b6f2aad
-cp %{_builddir}/plasma-desktop-5.20.0/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/'plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Air Balloon.png.license' %{buildroot}/usr/share/package-licenses/plasma-desktop/adabd116af64401b76dd0583f403226df139a955
+cp %{_builddir}/plasma-desktop-5.20.1/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/plasma-desktop-5.20.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.20.1/COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/plasma-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/plasma-desktop-5.20.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/plasma-desktop-5.20.1/applets/kimpanel/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/plasma-desktop-5.20.1/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.20.1/applets/kimpanel/COPYING.LIB %{buildroot}/usr/share/package-licenses/plasma-desktop/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/plasma-desktop-5.20.1/applets/kimpanel/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/touchpad/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/8b24e55e650d5d13ae3b1a2162a70b5238400aed
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Astronaut.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/cf03e23da9870281180ea4163b13a7bcf38a7a82
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Books.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/cfbb9bcb7e1389c251a0ba3df2b0880cb6620ffb
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Brushes.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/72d8e0f71a54fd570e1e5264d6e5fb7b29406ad4
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Bulb.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/be0b3c0900b90dd09df479fad56b1229ad516d3a
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Car.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/0a9b728823a71ad489b7e1f072590fa00f3aa5bc
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Cat.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/129c1e09a68be9de6cef412b2a6e93559a87ea26
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Chamelon.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/c1d70c75552ee593940f393a518534e72587338f
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Cocktail.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/25b13534deaa992a714f25f14efeaa5eae4de592
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Dog.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/6220b049f6ae68dbc5a495f05afca9adead61ff6
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Fish.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/53c07475f67932feacd6188d906188a8dbd6991a
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Gamepad.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/32946f0e0836c590cc36b8b3206eef0349aa13dd
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Owl.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/f1bbe3025f15ecddbed6d4510fc2a1794ebf6009
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Pancakes.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/7cd170c61cf35ee527ce0ffa4abf416bf29038a7
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Parrot.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/a8b6c38c66a63e54df39a7a2394a61c386dcc323
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Pencils.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/545c254aaacc416b6d7d7881d4ad9fe94c1cbf1e
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Shuttle.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/3846b0d0a1072ef0698c1383f6aa5fa88e617a0d
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Soccer.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/2363d6a59f5770f0340ae0e616d48b000ed85041
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Sunflower.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/a8a48fc3a258971b868e37643efbabf5ca42ae95
+cp %{_builddir}/plasma-desktop-5.20.1/kcms/users/package/contents/img/photos/Sushi.png.license %{buildroot}/usr/share/package-licenses/plasma-desktop/e6059edbfaf63e2ad3822f2c09b7ee4c9b6f2aad
+cp %{_builddir}/plasma-desktop-5.20.1/solid-device-automounter/COPYING %{buildroot}/usr/share/package-licenses/plasma-desktop/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.24.5
-Release  : 82
-URL      : https://download.kde.org/stable/plasma/5.24.5/plasma-desktop-5.24.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.24.5/plasma-desktop-5.24.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.24.5/plasma-desktop-5.24.5.tar.xz.sig
+Version  : 5.25.0
+Release  : 83
+URL      : https://download.kde.org/stable/plasma/5.25.0/plasma-desktop-5.25.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.0/plasma-desktop-5.25.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.0/plasma-desktop-5.25.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -88,7 +88,6 @@ BuildRequires : plasma-framework-dev
 BuildRequires : plasma-workspace-dev
 BuildRequires : pulseaudio-dev
 BuildRequires : qqc2-desktop-style-dev
-BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : qtx11extras-dev
 BuildRequires : solid-dev
@@ -160,15 +159,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.24.5
-cd %{_builddir}/plasma-desktop-5.24.5
+%setup -q -n plasma-desktop-5.25.0
+cd %{_builddir}/plasma-desktop-5.25.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651625360
+export SOURCE_DATE_EPOCH=1655416786
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -184,28 +183,28 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1651625360
+export SOURCE_DATE_EPOCH=1655416786
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.24.5/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
-cp %{_builddir}/plasma-desktop-5.24.5/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
-cp %{_builddir}/plasma-desktop-5.24.5/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.25.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
+cp %{_builddir}/plasma-desktop-5.25.0/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
+cp %{_builddir}/plasma-desktop-5.25.0/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
 pushd clr-build
 %make_install
 popd
@@ -287,6 +286,7 @@ popd
 /usr/share/applications/kcm_kded.desktop
 /usr/share/applications/kcm_keyboard.desktop
 /usr/share/applications/kcm_keys.desktop
+/usr/share/applications/kcm_krunnersettings.desktop
 /usr/share/applications/kcm_launchfeedback.desktop
 /usr/share/applications/kcm_mouse.desktop
 /usr/share/applications/kcm_plasmasearch.desktop
@@ -306,10 +306,12 @@ popd
 /usr/share/config.kcfg/kcmaccessibilitykeyboard.kcfg
 /usr/share/config.kcfg/kcmaccessibilitymouse.kcfg
 /usr/share/config.kcfg/kcmaccessibilityscreenreader.kcfg
+/usr/share/config.kcfg/krunnersettingsbase.kcfg
 /usr/share/config.kcfg/landingpage_kdeglobalssettings.kcfg
 /usr/share/config.kcfg/launchfeedbacksettingsbase.kcfg
 /usr/share/config.kcfg/splashscreensettings.kcfg
 /usr/share/config.kcfg/workspaceoptions_kdeglobalssettings.kcfg
+/usr/share/config.kcfg/workspaceoptions_kwinsettings.kcfg
 /usr/share/config.kcfg/workspaceoptions_plasmasettings.kcfg
 /usr/share/dbus-1/interfaces/org.kde.touchpad.xml
 /usr/share/dbus-1/system-services/org.kde.kcontrol.kcmclock.service
@@ -371,6 +373,7 @@ popd
 /usr/share/kpackage/kcms/kcm_componentchooser/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_keys/contents/ui/ShortcutActionDelegate.qml
 /usr/share/kpackage/kcms/kcm_keys/contents/ui/main.qml
+/usr/share/kpackage/kcms/kcm_krunnersettings/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_landingpage/contents/ui/FeedbackControls.qml
 /usr/share/kpackage/kcms/kcm_landingpage/contents/ui/MostUsedIcon.qml
 /usr/share/kpackage/kcms/kcm_landingpage/contents/ui/Thumbnail.qml
@@ -512,6 +515,11 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/contents/ui/main.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/plugin/marginSeparator.cpp
+/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/plugin/marginSeparator.h
 /usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/metadata.json
@@ -539,6 +547,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/GroupExpanderOverlay.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/MouseHandler.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/PipeWireThumbnail.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/PlayerController.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/PulseAudio.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/ScrollableTextWrapper.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/Task.qml
@@ -554,6 +563,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.trash/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.trash/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/ui/MenuButton.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.windowlist/metadata.json
 /usr/share/plasma/plasmoids/touchpad/contents/ui/touchpad.qml
@@ -582,10 +592,12 @@ popd
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/ContainmentConfiguration.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/MouseEventInputButton.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/PanelConfiguration.qml
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/ShellContainmentConfiguration.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/panelconfiguration/MoreSettingsMenu.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/panelconfiguration/Ruler.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/panelconfiguration/SliderHandle.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/panelconfiguration/ToolBar.qml
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/configuration/shellcontainmentconfiguration/Delegate.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/defaults
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/explorer/AppletAlternatives.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/explorer/AppletDelegate.qml
@@ -598,7 +610,6 @@ popd
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js
-/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/views/Desktop.qml
@@ -1083,6 +1094,8 @@ popd
 /usr/share/doc/HTML/ru/kcontrol/joystick/joystick-main.png
 /usr/share/doc/HTML/ru/kcontrol/kcmaccess/index.cache.bz2
 /usr/share/doc/HTML/ru/kcontrol/kcmaccess/index.docbook
+/usr/share/doc/HTML/ru/kcontrol/kcmactivities/index.cache.bz2
+/usr/share/doc/HTML/ru/kcontrol/kcmactivities/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/ru/kcontrol/kcmlaunchfeedback/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/kcmsmserver/index.cache.bz2
@@ -1111,6 +1124,8 @@ popd
 /usr/share/doc/HTML/ru/kcontrol/splashscreen/index.cache.bz2
 /usr/share/doc/HTML/ru/kcontrol/splashscreen/index.docbook
 /usr/share/doc/HTML/ru/kcontrol/splashscreen/splash-main.png
+/usr/share/doc/HTML/ru/kfontview/index.cache.bz2
+/usr/share/doc/HTML/ru/kfontview/index.docbook
 /usr/share/doc/HTML/ru/knetattach/index.cache.bz2
 /usr/share/doc/HTML/ru/knetattach/index.docbook
 /usr/share/doc/HTML/ru/plasma-desktop/index.cache.bz2
@@ -1239,9 +1254,11 @@ popd
 /usr/lib64/qt5/plugins/kf5/kded/keyboard.so
 /usr/lib64/qt5/plugins/kf5/krunner/krunner_kwin.so
 /usr/lib64/qt5/plugins/kf5/krunner/krunner_plasma-desktop.so
+/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
 /usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_touchpad.so
 /usr/lib64/qt5/plugins/plasma/kcminit/kcm_mouse_init.so
 /usr/lib64/qt5/plugins/plasma/kcminit/kcm_touchpad_init.so
+/usr/lib64/qt5/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_access.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_baloofile.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_componentchooser.so

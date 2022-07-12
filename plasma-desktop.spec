@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.25.2
-Release  : 85
-URL      : https://download.kde.org/stable/plasma/5.25.2/plasma-desktop-5.25.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.2/plasma-desktop-5.25.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.2/plasma-desktop-5.25.2.tar.xz.sig
+Version  : 5.25.3
+Release  : 86
+URL      : https://download.kde.org/stable/plasma/5.25.3/plasma-desktop-5.25.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.3/plasma-desktop-5.25.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.3/plasma-desktop-5.25.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -159,15 +159,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.25.2
-cd %{_builddir}/plasma-desktop-5.25.2
+%setup -q -n plasma-desktop-5.25.3
+cd %{_builddir}/plasma-desktop-5.25.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656449742
+export SOURCE_DATE_EPOCH=1657648348
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -183,28 +183,28 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1656449742
+export SOURCE_DATE_EPOCH=1657648348
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
-cp %{_builddir}/plasma-desktop-5.25.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
-cp %{_builddir}/plasma-desktop-5.25.2/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
-cp %{_builddir}/plasma-desktop-5.25.2/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
+cp %{_builddir}/plasma-desktop-5.25.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
+cp %{_builddir}/plasma-desktop-5.25.3/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5
+cp %{_builddir}/plasma-desktop-5.25.3/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47
 pushd clr-build
 %make_install
 popd
@@ -225,6 +225,7 @@ popd
 %find_lang kcm_activities5
 %find_lang kcm_baloofile
 %find_lang kcm_keys
+%find_lang kcm_krunnersettings
 %find_lang kcm_landingpage
 %find_lang kcm_search
 %find_lang kcm_solid_actions
@@ -1319,6 +1320,6 @@ popd
 /usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
 
-%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_launchfeedback.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_landingpage.lang -f kcm_search.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang
+%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_launchfeedback.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_krunnersettings.lang -f kcm_landingpage.lang -f kcm_search.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang
 %defattr(-,root,root,-)
 

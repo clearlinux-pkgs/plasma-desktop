@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.25.5
-Release  : 88
-URL      : https://download.kde.org/stable/plasma/5.25.5/plasma-desktop-5.25.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.5/plasma-desktop-5.25.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.5/plasma-desktop-5.25.5.tar.xz.sig
+Version  : 5.26.0
+Release  : 89
+URL      : https://download.kde.org/stable/plasma/5.26.0/plasma-desktop-5.26.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.0/plasma-desktop-5.26.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.0/plasma-desktop-5.26.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -25,8 +25,10 @@ BuildRequires : breeze-icons
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules pkgconfig(glib-2.0)
+BuildRequires : extra-cmake-modules pkgconfig(wayland-client)
 BuildRequires : extra-cmake-modules pkgconfig(x11-xcb)
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
+BuildRequires : extra-cmake-modules qtwayland-dev
 BuildRequires : extra-cmake-modules-data
 BuildRequires : ibus-dev
 BuildRequires : kaccounts-integration-dev
@@ -42,7 +44,6 @@ BuildRequires : kemoticons-dev
 BuildRequires : kfilemetadata-dev
 BuildRequires : kglobalaccel-dev
 BuildRequires : kguiaddons-dev
-BuildRequires : ki18n-dev
 BuildRequires : kiconthemes-dev
 BuildRequires : kinit-dev
 BuildRequires : kirigami2-dev
@@ -78,6 +79,7 @@ BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(ibus-1.0)
+BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xorg-evdev)
@@ -159,15 +161,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.25.5
-cd %{_builddir}/plasma-desktop-5.25.5
+%setup -q -n plasma-desktop-5.26.0
+cd %{_builddir}/plasma-desktop-5.26.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662508070
+export SOURCE_DATE_EPOCH=1665768379
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -183,7 +185,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662508070
+export SOURCE_DATE_EPOCH=1665768379
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -227,7 +229,8 @@ popd
 %find_lang kcm_keys
 %find_lang kcm_krunnersettings
 %find_lang kcm_landingpage
-%find_lang kcm_search
+%find_lang kcm_plasmasearch
+%find_lang kcm_recentFiles
 %find_lang kcm_solid_actions
 %find_lang kcm_splashscreen
 %find_lang kcm_tablet
@@ -240,7 +243,6 @@ popd
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
 %find_lang plasma_applet_org.kde.plasma.kimpanel
-%find_lang plasma_applet_org.kde.plasma.minimizeall
 %find_lang plasma_applet_org.kde.plasma.pager
 %find_lang plasma_applet_org.kde.plasma.showActivityManager
 %find_lang plasma_applet_org.kde.plasma.showdesktop
@@ -282,16 +284,17 @@ popd
 /usr/share/applications/kcm_clock.desktop
 /usr/share/applications/kcm_componentchooser.desktop
 /usr/share/applications/kcm_desktoppaths.desktop
-/usr/share/applications/kcm_device_automounter.desktop
 /usr/share/applications/kcm_joystick.desktop
 /usr/share/applications/kcm_kded.desktop
 /usr/share/applications/kcm_keyboard.desktop
 /usr/share/applications/kcm_keys.desktop
 /usr/share/applications/kcm_krunnersettings.desktop
+/usr/share/applications/kcm_landingpage.desktop
 /usr/share/applications/kcm_launchfeedback.desktop
 /usr/share/applications/kcm_mouse.desktop
 /usr/share/applications/kcm_plasmasearch.desktop
 /usr/share/applications/kcm_qtquicksettings.desktop
+/usr/share/applications/kcm_recentFiles.desktop
 /usr/share/applications/kcm_smserver.desktop
 /usr/share/applications/kcm_solid_actions.desktop
 /usr/share/applications/kcm_splashscreen.desktop
@@ -356,7 +359,7 @@ popd
 /usr/share/kf5/kactivitymanagerd/workspace/settings/qml/activitiesTab/ActivitiesView.qml
 /usr/share/kf5/kactivitymanagerd/workspace/settings/qml/activitiesTab/main.qml
 /usr/share/kf5/kactivitymanagerd/workspace/settings/qml/activityDialog/GeneralTab.qml
-/usr/share/kf5/kactivitymanagerd/workspace/settings/qml/privacyTab/BlacklistApplicationView.qml
+/usr/share/kf5/kcm_recentFiles/workspace/settings/qml/recentFiles/BlacklistApplicationView.qml
 /usr/share/kglobalaccel/org.kde.plasma.emojier.desktop
 /usr/share/knotifications5/kaccess.notifyrc
 /usr/share/knotifications5/kcm_touchpad.notifyrc
@@ -380,8 +383,11 @@ popd
 /usr/share/kpackage/kcms/kcm_landingpage/contents/ui/Thumbnail.qml
 /usr/share/kpackage/kcms/kcm_landingpage/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_launchfeedback/contents/ui/main.qml
+/usr/share/kpackage/kcms/kcm_plasmasearch/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_smserver/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_splashscreen/contents/ui/main.qml
+/usr/share/kpackage/kcms/kcm_tablet/contents/ui/Output.qml
+/usr/share/kpackage/kcms/kcm_tablet/contents/ui/RebindButtons.qml
 /usr/share/kpackage/kcms/kcm_tablet/contents/ui/main.qml
 /usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml
 /usr/share/kservicetypes5/solid-device-type.desktop
@@ -392,6 +398,7 @@ popd
 /usr/share/metainfo/org.kde.desktopcontainment.appdata.xml
 /usr/share/metainfo/org.kde.desktoptoolbox.appdata.xml
 /usr/share/metainfo/org.kde.paneltoolbox.appdata.xml
+/usr/share/metainfo/org.kde.plasma.activitypager.appdata.xml
 /usr/share/metainfo/org.kde.plasma.desktop.appdata.xml
 /usr/share/metainfo/org.kde.plasma.desktop.appmenubar.appdata.xml
 /usr/share/metainfo/org.kde.plasma.desktop.defaultPanel.appdata.xml
@@ -449,6 +456,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.panel/contents/ui/LayoutManager.js
 /usr/share/plasma/plasmoids/org.kde.panel/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.panel/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.activitypager/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.folder/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.icontasks/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.keyboardlayout/contents/config/config.qml
@@ -479,6 +487,7 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.kicker/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/AbstractKickoffItemDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/ActionMenu.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/ApplicationsPage.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/BasePage.qml
@@ -492,13 +501,15 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/HorizontalStackView.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/Kickoff.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffDropArea.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffGridDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffGridView.qml
-/usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffItemDelegate.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffListDelegate.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffListView.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/KickoffSingleton.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/LeaveButtons.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/NormalPage.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/PlacesPage.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/SectionView.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/VerticalStackView.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/code/tools.js
 /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/qmldir
@@ -516,13 +527,6 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/contents/config/main.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/metadata.json
-/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/contents/config/main.xml
-/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/contents/ui/main.qml
-/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/package/metadata.json
-/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/plugin/marginSeparator.cpp
-/usr/share/plasma/plasmoids/org.kde.plasma.marginsseparator/plugin/marginSeparator.h
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/config/main.xml
-/usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.minimizeall/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.pager/contents/config/config.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.pager/contents/config/main.xml
@@ -535,6 +539,9 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.showActivityManager/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.showActivityManager/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/ui/Controller.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/ui/MinimizeAllController.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/ui/PeekController.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.showdesktop/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/config.qml
@@ -564,6 +571,9 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/metadata.json
 /usr/share/plasma/plasmoids/org.kde.plasma.trash/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.trash/metadata.json
+/usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/config/config.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/config/main.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/ui/ConfigGeneral.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/ui/MenuButton.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.windowlist/contents/ui/main.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.windowlist/metadata.json
@@ -606,7 +616,10 @@ popd
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/explorer/WidgetExplorer.qml
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js
+/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js
 /usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js
@@ -1257,7 +1270,6 @@ popd
 /usr/lib64/qt5/plugins/kf5/kded/keyboard.so
 /usr/lib64/qt5/plugins/kf5/krunner/krunner_kwin.so
 /usr/lib64/qt5/plugins/kf5/krunner/krunner_plasma-desktop.so
-/usr/lib64/qt5/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
 /usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_touchpad.so
 /usr/lib64/qt5/plugins/plasma/kcminit/kcm_mouse_init.so
 /usr/lib64/qt5/plugins/plasma/kcminit/kcm_touchpad_init.so
@@ -1271,6 +1283,7 @@ popd
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_landingpage.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_launchfeedback.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_mouse.so
+/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_plasmasearch.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_smserver.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_splashscreen.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_tablet.so
@@ -1281,8 +1294,8 @@ popd
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_desktoppaths.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_joystick.so
-/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_plasmasearch.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
+/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_recentFiles.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
 /usr/lib64/qt5/qml/org/kde/activities/settings/libkactivitiessettingsplugin.so
@@ -1322,6 +1335,6 @@ popd
 /usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
 
-%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_launchfeedback.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_krunnersettings.lang -f kcm_landingpage.lang -f kcm_search.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.minimizeall.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang
+%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_launchfeedback.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_krunnersettings.lang -f kcm_landingpage.lang -f kcm_plasmasearch.lang -f kcm_recentFiles.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang
 %defattr(-,root,root,-)
 

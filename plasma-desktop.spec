@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.26.1
-Release  : 90
-URL      : https://download.kde.org/stable/plasma/5.26.1/plasma-desktop-5.26.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.1/plasma-desktop-5.26.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.1/plasma-desktop-5.26.1.tar.xz.sig
+Version  : 5.26.2
+Release  : 91
+URL      : https://download.kde.org/stable/plasma/5.26.2/plasma-desktop-5.26.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.2/plasma-desktop-5.26.2.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.2/plasma-desktop-5.26.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -161,15 +161,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.26.1
-cd %{_builddir}/plasma-desktop-5.26.1
+%setup -q -n plasma-desktop-5.26.2
+cd %{_builddir}/plasma-desktop-5.26.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666288098
+export SOURCE_DATE_EPOCH=1667247020
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -185,7 +185,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1666288098
+export SOURCE_DATE_EPOCH=1667247020
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :

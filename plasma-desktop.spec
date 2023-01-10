@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.26.4
-Release  : 93
-URL      : https://download.kde.org/stable/plasma/5.26.4/plasma-desktop-5.26.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.4/plasma-desktop-5.26.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.4/plasma-desktop-5.26.4.tar.xz.sig
+Version  : 5.26.5
+Release  : 94
+URL      : https://download.kde.org/stable/plasma/5.26.5/plasma-desktop-5.26.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.5/plasma-desktop-5.26.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.5/plasma-desktop-5.26.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -103,6 +103,9 @@ BuildRequires : xcb-util-renderutil-dev
 BuildRequires : xcb-util-wm-dev
 BuildRequires : xcb-util-xrm-dev
 BuildRequires : xorg-server-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 This is new project to replace keyboard (kcmmisc) and kxkb
@@ -161,31 +164,31 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.26.4
-cd %{_builddir}/plasma-desktop-5.26.4
+%setup -q -n plasma-desktop-5.26.5
+cd %{_builddir}/plasma-desktop-5.26.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1669823355
+export SOURCE_DATE_EPOCH=1673313809
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1669823355
+export SOURCE_DATE_EPOCH=1673313809
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :

@@ -6,7 +6,7 @@
 #
 Name     : plasma-desktop
 Version  : 5.27.0
-Release  : 95
+Release  : 96
 URL      : https://download.kde.org/stable/plasma/5.27.0/plasma-desktop-5.27.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.27.0/plasma-desktop-5.27.0.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.27.0/plasma-desktop-5.27.0.tar.xz.sig
@@ -171,7 +171,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676750389
+export SOURCE_DATE_EPOCH=1676868301
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -187,7 +187,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1676750389
+export SOURCE_DATE_EPOCH=1676868301
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :

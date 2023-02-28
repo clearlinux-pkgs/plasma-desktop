@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.1
-Release  : 97
-URL      : https://download.kde.org/stable/plasma/5.27.1/plasma-desktop-5.27.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.1/plasma-desktop-5.27.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.1/plasma-desktop-5.27.1.tar.xz.sig
+Version  : 5.27.2
+Release  : 98
+URL      : https://download.kde.org/stable/plasma/5.27.2/plasma-desktop-5.27.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.2/plasma-desktop-5.27.2.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.2/plasma-desktop-5.27.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -163,15 +163,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.1
-cd %{_builddir}/plasma-desktop-5.27.1
+%setup -q -n plasma-desktop-5.27.2
+cd %{_builddir}/plasma-desktop-5.27.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1677191316
+export SOURCE_DATE_EPOCH=1677606386
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -187,7 +187,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1677191316
+export SOURCE_DATE_EPOCH=1677606386
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -257,7 +257,6 @@ popd
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
 %find_lang plasma_toolbox_org.kde.paneltoolbox
 %find_lang plasmaactivitymanager
-%find_lang kcm_launchfeedback
 ## install_append content
 #mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
 ## install_append end
@@ -1448,6 +1447,6 @@ popd
 /usr/share/package-licenses/plasma-desktop/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/plasma-desktop/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
 
-%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_krunnersettings.lang -f kcm_landingpage.lang -f kcm_plasmasearch.lang -f kcm_recentFiles.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_touchscreen.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang -f kcm_launchfeedback.lang
+%files locales -f kaccess.lang -f kcm5_joystick.lang -f kcm5_kded.lang -f kcm_access.lang -f kcm_componentchooser.lang -f kcm_desktoppaths.lang -f kcm_smserver.lang -f kcmkclock.lang -f kcmkeyboard.lang -f kcmmouse.lang -f knetattach5.lang -f plasma_applet_org.kde.desktopcontainment.lang -f kcm5_device_automounter.lang -f kcm_activities5.lang -f kcm_baloofile.lang -f kcm_keys.lang -f kcm_krunnersettings.lang -f kcm_landingpage.lang -f kcm_plasmasearch.lang -f kcm_recentFiles.lang -f kcm_solid_actions.lang -f kcm_splashscreen.lang -f kcm_tablet.lang -f kcm_touchpad.lang -f kcm_touchscreen.lang -f kcm_workspace.lang -f kcmqtquicksettings.lang -f org.kde.plasma.emojier.lang -f plasma_applet_org.kde.panel.lang -f plasma_applet_org.kde.plasma.keyboardlayout.lang -f plasma_applet_org.kde.plasma.kicker.lang -f plasma_applet_org.kde.plasma.kickoff.lang -f plasma_applet_org.kde.plasma.kimpanel.lang -f plasma_applet_org.kde.plasma.pager.lang -f plasma_applet_org.kde.plasma.showActivityManager.lang -f plasma_applet_org.kde.plasma.showdesktop.lang -f plasma_applet_org.kde.plasma.taskmanager.lang -f plasma_applet_org.kde.plasma.trash.lang -f plasma_applet_org.kde.plasma.windowlist.lang -f plasma_runner_kwin.lang -f plasma_runner_plasma-desktop.lang -f plasma_shell_org.kde.plasma.desktop.lang -f plasma_toolbox_org.kde.desktoptoolbox.lang -f plasma_toolbox_org.kde.paneltoolbox.lang -f plasmaactivitymanager.lang
 %defattr(-,root,root,-)
 

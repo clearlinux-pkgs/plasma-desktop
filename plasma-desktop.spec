@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.3
-Release  : 99
-URL      : https://download.kde.org/stable/plasma/5.27.3/plasma-desktop-5.27.3.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.3/plasma-desktop-5.27.3.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.3/plasma-desktop-5.27.3.tar.xz.sig
+Version  : 5.27.4
+Release  : 100
+URL      : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -164,15 +164,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.3
-cd %{_builddir}/plasma-desktop-5.27.3
+%setup -q -n plasma-desktop-5.27.4
+cd %{_builddir}/plasma-desktop-5.27.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679530733
+export SOURCE_DATE_EPOCH=1680720176
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -188,7 +188,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1679530733
+export SOURCE_DATE_EPOCH=1680720176
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -968,6 +968,8 @@ popd
 /usr/share/doc/HTML/es/kcontrol/componentchooser/index.docbook
 /usr/share/doc/HTML/es/kcontrol/joystick/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/joystick/index.docbook
+/usr/share/doc/HTML/es/kcontrol/kcmaccess/index.cache.bz2
+/usr/share/doc/HTML/es/kcontrol/kcmaccess/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kcmlaunchfeedback/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/kcmlaunchfeedback/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kcmsmserver/index.cache.bz2
@@ -980,12 +982,16 @@ popd
 /usr/share/doc/HTML/es/kcontrol/mouse/index.docbook
 /usr/share/doc/HTML/es/kcontrol/paths/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/paths/index.docbook
+/usr/share/doc/HTML/es/kcontrol/solid-actions/index.cache.bz2
+/usr/share/doc/HTML/es/kcontrol/solid-actions/index.docbook
 /usr/share/doc/HTML/es/kcontrol/solid-device-automounter/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/solid-device-automounter/index.docbook
 /usr/share/doc/HTML/es/kcontrol/spellchecking/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/spellchecking/index.docbook
 /usr/share/doc/HTML/es/kcontrol/splashscreen/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/splashscreen/index.docbook
+/usr/share/doc/HTML/es/kcontrol/workspaceoptions/index.cache.bz2
+/usr/share/doc/HTML/es/kcontrol/workspaceoptions/index.docbook
 /usr/share/doc/HTML/es/kfontview/index.cache.bz2
 /usr/share/doc/HTML/es/kfontview/index.docbook
 /usr/share/doc/HTML/es/knetattach/index.cache.bz2

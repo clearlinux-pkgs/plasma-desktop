@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.4
-Release  : 100
-URL      : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.4/plasma-desktop-5.27.4.tar.xz.sig
+Version  : 5.27.5
+Release  : 101
+URL      : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -79,7 +79,6 @@ BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(ibus-1.0)
-BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : pkgconfig(xkeyboard-config)
 BuildRequires : pkgconfig(xorg-evdev)
@@ -95,6 +94,7 @@ BuildRequires : qtx11extras-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 BuildRequires : systemd-dev
+BuildRequires : wayland-protocols-dev
 BuildRequires : xcb-util-cursor-dev
 BuildRequires : xcb-util-dev
 BuildRequires : xcb-util-image-dev
@@ -164,31 +164,31 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.4
-cd %{_builddir}/plasma-desktop-5.27.4
+%setup -q -n plasma-desktop-5.27.5
+cd %{_builddir}/plasma-desktop-5.27.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680720176
+export SOURCE_DATE_EPOCH=1684944551
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1680720176
+export SOURCE_DATE_EPOCH=1684944551
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -1329,6 +1329,40 @@ popd
 /usr/share/doc/HTML/sv/knetattach/index.docbook
 /usr/share/doc/HTML/sv/plasma-desktop/index.cache.bz2
 /usr/share/doc/HTML/sv/plasma-desktop/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/baloo/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/baloo/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/clock/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/clock/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/componentchooser/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/componentchooser/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/joystick/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/joystick/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/kcmactivities/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/kcmactivities/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/kcmsmserver/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/kcmsmserver/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/kded/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/kded/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/keyboard/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/keyboard/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/mouse/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/mouse/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/paths/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/paths/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/solid-actions/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/solid-actions/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/solid-device-automounter/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/solid-device-automounter/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/spellchecking/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/spellchecking/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/splashscreen/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/splashscreen/index.docbook
+/usr/share/doc/HTML/tr/kcontrol/workspaceoptions/index.cache.bz2
+/usr/share/doc/HTML/tr/kcontrol/workspaceoptions/index.docbook
+/usr/share/doc/HTML/tr/kfontview/index.cache.bz2
+/usr/share/doc/HTML/tr/kfontview/index.docbook
+/usr/share/doc/HTML/tr/knetattach/index.cache.bz2
+/usr/share/doc/HTML/tr/knetattach/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/baloo/index.cache.bz2
 /usr/share/doc/HTML/uk/kcontrol/baloo/index.docbook
 /usr/share/doc/HTML/uk/kcontrol/clock/index.cache.bz2

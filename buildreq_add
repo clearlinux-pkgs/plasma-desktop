@@ -56,3 +56,4 @@ xcb-util-wm-dev
 xcb-util-xrm-dev
 xorg-server-dev
 kaccounts-integration-dev
+wayland-protocols-dev

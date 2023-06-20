@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.5
-Release  : 101
-URL      : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.5/plasma-desktop-5.27.5.tar.xz.sig
+Version  : 5.27.6
+Release  : 102
+URL      : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -164,15 +164,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.5
-cd %{_builddir}/plasma-desktop-5.27.5
+%setup -q -n plasma-desktop-5.27.6
+cd %{_builddir}/plasma-desktop-5.27.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684944551
+export SOURCE_DATE_EPOCH=1687294733
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -186,9 +186,26 @@ export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonl
 %cmake ..
 make  %{?_smp_mflags}
 popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+%cmake ..
+make  %{?_smp_mflags}
+popd
 
 %install
-export SOURCE_DATE_EPOCH=1684944551
+export SOURCE_DATE_EPOCH=1687294733
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -210,6 +227,9 @@ cp %{_builddir}/plasma-desktop-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.
 cp %{_builddir}/plasma-desktop-%{version}/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5 || :
 cp %{_builddir}/plasma-desktop-%{version}/LICENSES/LicenseRef-synaptics.txt %{buildroot}/usr/share/package-licenses/plasma-desktop/d08cb4fd7d3ab2539fc98f64d2c713453dfe46b5 || :
 cp %{_builddir}/plasma-desktop-%{version}/applets/kimpanel/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/plasma-desktop/57c3cb6b9aee09ae2af06b0c517e2969d2f33d47 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
@@ -261,15 +281,27 @@ popd
 ## install_append content
 #mv %{buildroot}/etc/dbus-1/* %{buildroot}/usr/share/dbus-1/
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
+/V3/usr/lib64/libexec/kauth/kcmdatetimehelper
+/V3/usr/lib64/libexec/kimpanel-ibus-panel
+/V3/usr/lib64/libexec/kimpanel-ibus-panel-launcher
 /usr/lib64/libexec/kauth/kcmdatetimehelper
 /usr/lib64/libexec/kimpanel-ibus-panel
 /usr/lib64/libexec/kimpanel-ibus-panel-launcher
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/kaccess
+/V3/usr/bin/kapplymousetheme
+/V3/usr/bin/kcm-touchpad-list-devices
+/V3/usr/bin/knetattach
+/V3/usr/bin/krunner-plugininstaller
+/V3/usr/bin/plasma-emojier
+/V3/usr/bin/solid-action-desktop-gen
+/V3/usr/bin/tastenbrett
 /usr/bin/kaccess
 /usr/bin/kapplymousetheme
 /usr/bin/kcm-touchpad-list-devices
@@ -1416,6 +1448,47 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/qt5/plugins/kf5/kded/device_automounter.so
+/V3/usr/lib64/qt5/plugins/kf5/kded/kded_touchpad.so
+/V3/usr/lib64/qt5/plugins/kf5/kded/keyboard.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_kwin.so
+/V3/usr/lib64/qt5/plugins/kf5/krunner/krunner_plasma-desktop.so
+/V3/usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_touchpad.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_access.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_baloofile.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_componentchooser.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_kded.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_keyboard.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_keys.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_landingpage.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_mouse.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_plasmasearch.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_smserver.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_splashscreen.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_tablet.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_touchpad.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_touchscreen.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings/kcm_workspace.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_activities.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_desktoppaths.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_joystick.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_recentFiles.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+/V3/usr/lib64/qt5/qml/org/kde/activities/settings/libkactivitiessettingsplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/activityswitcher/libactivityswitcherextensionplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/emoji/libEmojierDeclarativePlugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/kimpanel/libkimpanelplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/pager/libpagerplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/showdesktop/libshowdesktopplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/taskmanager/libtaskmanagerplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/private/trash/libtrashplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/private/desktopcontainment/desktop/libdesktopplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/private/desktopcontainment/folder/libfolderplugin.so
 /usr/lib64/qt5/plugins/kf5/kded/device_automounter.so
 /usr/lib64/qt5/plugins/kf5/kded/kded_touchpad.so
 /usr/lib64/qt5/plugins/kf5/kded/keyboard.so

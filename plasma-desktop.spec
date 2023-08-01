@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.6
-Release  : 102
-URL      : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.6/plasma-desktop-5.27.6.tar.xz.sig
+Version  : 5.27.7
+Release  : 103
+URL      : https://download.kde.org/stable/plasma/5.27.7/plasma-desktop-5.27.7.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.7/plasma-desktop-5.27.7.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.7/plasma-desktop-5.27.7.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -164,15 +164,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.6
-cd %{_builddir}/plasma-desktop-5.27.6
+%setup -q -n plasma-desktop-5.27.7
+cd %{_builddir}/plasma-desktop-5.27.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1687294733
+export SOURCE_DATE_EPOCH=1690901309
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -205,7 +205,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1687294733
+export SOURCE_DATE_EPOCH=1690901309
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -460,6 +460,7 @@ popd
 /usr/share/plasma/emoji/az.dict
 /usr/share/plasma/emoji/be.dict
 /usr/share/plasma/emoji/bg.dict
+/usr/share/plasma/emoji/bgn.dict
 /usr/share/plasma/emoji/bn.dict
 /usr/share/plasma/emoji/br.dict
 /usr/share/plasma/emoji/bs.dict
@@ -479,7 +480,7 @@ popd
 /usr/share/plasma/emoji/en_001.dict
 /usr/share/plasma/emoji/en_AU.dict
 /usr/share/plasma/emoji/en_CA.dict
-/usr/share/plasma/emoji/en_GB.dict
+/usr/share/plasma/emoji/en_IN.dict
 /usr/share/plasma/emoji/es.dict
 /usr/share/plasma/emoji/es_419.dict
 /usr/share/plasma/emoji/es_MX.dict
@@ -487,6 +488,7 @@ popd
 /usr/share/plasma/emoji/et.dict
 /usr/share/plasma/emoji/eu.dict
 /usr/share/plasma/emoji/fa.dict
+/usr/share/plasma/emoji/ff_Adlm.dict
 /usr/share/plasma/emoji/fi.dict
 /usr/share/plasma/emoji/fil.dict
 /usr/share/plasma/emoji/fo.dict
@@ -521,6 +523,7 @@ popd
 /usr/share/plasma/emoji/kok.dict
 /usr/share/plasma/emoji/ky.dict
 /usr/share/plasma/emoji/lb.dict
+/usr/share/plasma/emoji/lij.dict
 /usr/share/plasma/emoji/lo.dict
 /usr/share/plasma/emoji/lt.dict
 /usr/share/plasma/emoji/lv.dict
@@ -537,6 +540,8 @@ popd
 /usr/share/plasma/emoji/nl.dict
 /usr/share/plasma/emoji/nn.dict
 /usr/share/plasma/emoji/no.dict
+/usr/share/plasma/emoji/nso.dict
+/usr/share/plasma/emoji/oc.dict
 /usr/share/plasma/emoji/or.dict
 /usr/share/plasma/emoji/pa.dict
 /usr/share/plasma/emoji/pa_Arab.dict
@@ -546,10 +551,12 @@ popd
 /usr/share/plasma/emoji/pt.dict
 /usr/share/plasma/emoji/pt_PT.dict
 /usr/share/plasma/emoji/qu.dict
+/usr/share/plasma/emoji/quc.dict
 /usr/share/plasma/emoji/rm.dict
 /usr/share/plasma/emoji/ro.dict
 /usr/share/plasma/emoji/ru.dict
 /usr/share/plasma/emoji/rw.dict
+/usr/share/plasma/emoji/sat.dict
 /usr/share/plasma/emoji/sc.dict
 /usr/share/plasma/emoji/sd.dict
 /usr/share/plasma/emoji/si.dict
@@ -570,6 +577,7 @@ popd
 /usr/share/plasma/emoji/th.dict
 /usr/share/plasma/emoji/ti.dict
 /usr/share/plasma/emoji/tk.dict
+/usr/share/plasma/emoji/tn.dict
 /usr/share/plasma/emoji/to.dict
 /usr/share/plasma/emoji/tr.dict
 /usr/share/plasma/emoji/ug.dict
@@ -1008,6 +1016,8 @@ popd
 /usr/share/doc/HTML/es/kcontrol/kcmsmserver/index.docbook
 /usr/share/doc/HTML/es/kcontrol/kded/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/kded/index.docbook
+/usr/share/doc/HTML/es/kcontrol/keyboard/index.cache.bz2
+/usr/share/doc/HTML/es/kcontrol/keyboard/index.docbook
 /usr/share/doc/HTML/es/kcontrol/keys/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol/keys/index.docbook
 /usr/share/doc/HTML/es/kcontrol/mouse/index.cache.bz2
@@ -1028,6 +1038,8 @@ popd
 /usr/share/doc/HTML/es/kfontview/index.docbook
 /usr/share/doc/HTML/es/knetattach/index.cache.bz2
 /usr/share/doc/HTML/es/knetattach/index.docbook
+/usr/share/doc/HTML/es/plasma-desktop/index.cache.bz2
+/usr/share/doc/HTML/es/plasma-desktop/index.docbook
 /usr/share/doc/HTML/et/kcontrol/clock/index.cache.bz2
 /usr/share/doc/HTML/et/kcontrol/clock/index.docbook
 /usr/share/doc/HTML/et/kcontrol/solid-actions/index.cache.bz2

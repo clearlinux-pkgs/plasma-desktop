@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 5.27.9
-Release  : 107
-URL      : https://download.kde.org/stable/plasma/5.27.9/plasma-desktop-5.27.9.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.9/plasma-desktop-5.27.9.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.9/plasma-desktop-5.27.9.tar.xz.sig
+Version  : 5.27.10
+Release  : 108
+URL      : https://download.kde.org/stable/plasma/5.27.10/plasma-desktop-5.27.10.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.10/plasma-desktop-5.27.10.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.10/plasma-desktop-5.27.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -110,8 +110,13 @@ BuildRequires : xorg-server-dev
 %define debug_package %{nil}
 
 %description
-This is new project to replace keyboard (kcmmisc) and kxkb
-to manage keyboard hardware configuration and layouts.
+Build & Install:
+cmakekde
+RUN:
+type:
+kimpanel
+to launch the standalone version
+or add the plasma applet to your panel
 
 %package bin
 Summary: bin components for the plasma-desktop package.
@@ -166,15 +171,15 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-5.27.9
-cd %{_builddir}/plasma-desktop-5.27.9
+%setup -q -n plasma-desktop-5.27.10
+cd %{_builddir}/plasma-desktop-5.27.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702057851
+export SOURCE_DATE_EPOCH=1703119191
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -233,7 +238,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1702057851
+export SOURCE_DATE_EPOCH=1703119191
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :

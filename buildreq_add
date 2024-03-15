@@ -6,20 +6,15 @@ breeze-dev
 breeze-icons
 buildreq-kde
 ibus-dev
-kactivities-dev
-kactivities-stats-dev
 kcompletion-dev
 kcrash-dev
 kded-dev
-kdesignerplugin-dev
 kdoctools
-kemoticons-dev
 kfilemetadata-dev
 kglobalaccel-dev
 kguiaddons-dev
 kiconthemes-dev
-kinit-dev
-kirigami2-dev
+kirigami-dev
 kitemmodels-dev
 kitemviews-dev
 kjobwidgets-dev
@@ -41,7 +36,7 @@ libksysguard-dev
 libxcb-dev
 libxkbfile-dev
 phonon-dev
-plasma-framework-dev
+plasma-activities-stats-dev
 plasma-workspace-dev
 pulseaudio-dev
 solid-dev
@@ -55,5 +50,4 @@ xcb-util-renderutil-dev
 xcb-util-wm-dev
 xcb-util-xrm-dev
 xorg-server-dev
-kaccounts-integration-dev
 wayland-protocols-dev

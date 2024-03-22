@@ -51,3 +51,12 @@ xcb-util-wm-dev
 xcb-util-xrm-dev
 xorg-server-dev
 wayland-protocols-dev
+kaccounts-integration-dev
+SDL2-dev
+kpipewire
+kpipewire-dev
+libaccounts-qt-dev
+xdg-user-dirs
+qqc2-desktop-style-dev
+signond-dev
+intltool

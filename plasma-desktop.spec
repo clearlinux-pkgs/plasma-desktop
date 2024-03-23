@@ -9,7 +9,7 @@
 #
 Name     : plasma-desktop
 Version  : 6.0.2
-Release  : 110
+Release  : 111
 URL      : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz.sig
@@ -192,7 +192,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1711142571
+export SOURCE_DATE_EPOCH=1711155415
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -256,7 +256,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1711142571
+export SOURCE_DATE_EPOCH=1711155415
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :

@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 6.0.2
-Release  : 111
-URL      : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.0.2/plasma-desktop-6.0.2.tar.xz.sig
+Version  : 6.0.3
+Release  : 112
+URL      : https://download.kde.org/stable/plasma/6.0.3/plasma-desktop-6.0.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.0.3/plasma-desktop-6.0.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.0.3/plasma-desktop-6.0.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 GPL-2.0 GPL-3.0 HPND LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -120,13 +120,8 @@ BuildRequires : xorg-server-dev
 %define debug_package %{nil}
 
 %description
-Build & Install:
-cmakekde
-RUN:
-type:
-kimpanel
-to launch the standalone version
-or add the plasma applet to your panel
+This is new project to replace keyboard (kcmmisc) and kxkb
+to manage keyboard hardware configuration and layouts.
 
 %package bin
 Summary: bin components for the plasma-desktop package.
@@ -181,8 +176,8 @@ locales components for the plasma-desktop package.
 
 
 %prep
-%setup -q -n plasma-desktop-6.0.2
-cd %{_builddir}/plasma-desktop-6.0.2
+%setup -q -n plasma-desktop-6.0.3
+cd %{_builddir}/plasma-desktop-6.0.3
 
 %build
 ## build_prepend content
@@ -192,7 +187,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1711155415
+export SOURCE_DATE_EPOCH=1711729969
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -256,7 +251,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1711155415
+export SOURCE_DATE_EPOCH=1711729969
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
@@ -1078,8 +1073,22 @@ popd
 /usr/share/doc/HTML/et/kcontrol/solid-actions/index.docbook
 /usr/share/doc/HTML/et/kcontrol/solid-device-automounter/index.cache.bz2
 /usr/share/doc/HTML/et/kcontrol/solid-device-automounter/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/clock/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/clock/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/componentchooser/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/componentchooser/index.docbook
 /usr/share/doc/HTML/fr/kcontrol/kded/index.cache.bz2
 /usr/share/doc/HTML/fr/kcontrol/kded/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/paths/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/paths/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/solid-actions/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/solid-actions/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/spellchecking/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/spellchecking/index.docbook
+/usr/share/doc/HTML/fr/kcontrol/splashscreen/index.cache.bz2
+/usr/share/doc/HTML/fr/kcontrol/splashscreen/index.docbook
+/usr/share/doc/HTML/fr/knetattach/index.cache.bz2
+/usr/share/doc/HTML/fr/knetattach/index.docbook
 /usr/share/doc/HTML/id/kcontrol/baloo/index.cache.bz2
 /usr/share/doc/HTML/id/kcontrol/baloo/index.docbook
 /usr/share/doc/HTML/id/kcontrol/clock/index.cache.bz2

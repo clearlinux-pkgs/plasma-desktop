@@ -63,5 +63,6 @@ libnotificationmanager.so.1
 libprocesscore.so.10
 libstdc++.so.6
 libtaskmanager.so.6
+libwacom.so.9
 libwayland-client.so.0
 libxkbregistry.so.0

@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-desktop
-Version  : 6.3.1
-Release  : 129
-URL      : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.tar.xz.sig
+Version  : 6.3.1.1
+Release  : 130
+URL      : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.3.1/plasma-desktop-6.3.1.1.tar.xz.sig
 Source2  : D7574483BB57B18D.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -221,10 +221,10 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) D7574483BB57B18D' gpg.status
-%setup -q -n plasma-desktop-6.3.1
-cd %{_builddir}/plasma-desktop-6.3.1
+%setup -q -n plasma-desktop-6.3.1.1
+cd %{_builddir}/plasma-desktop-6.3.1.1
 pushd ..
-cp -a plasma-desktop-6.3.1 buildavx2
+cp -a plasma-desktop-6.3.1.1 buildavx2
 popd
 
 %build
@@ -235,7 +235,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1739923647
+export SOURCE_DATE_EPOCH=1739980456
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -301,7 +301,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1739923647
+export SOURCE_DATE_EPOCH=1739980456
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-desktop
 cp %{_builddir}/plasma-desktop-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/plasma-desktop/bd75d59f9d7d9731bfabdc48ecd19e704d218e38 || :
